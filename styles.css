@@ -77,7 +77,11 @@ nav {
 .add-to-cart {
   display: flex;
   width: 200px;
+  gap: 10px;
   height: 60px;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 15px;
   justify-content: space-between;
 }
 #cart-btn {
@@ -86,4 +90,16 @@ nav {
   color: white;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+.change-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.adjust {
+  background-color: rgb(20, 190, 111);
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 }
