@@ -56,16 +56,20 @@ nav {
 #shop {
   flex-direction: column;
   justify-content: start;
-  gap: 40px;
+  gap: 90px;
 }
 .shop-content {
   display: flex;
   justify-content: space-around;
 }
 
+.hero-image {
+  transition: all ease 0.3s;
+}
 .image {
   width: 400px;
   height: 50vh;
+  transition: all ease-in-out 0.3s;
 }
 .image img {
   width: 100%;
@@ -159,8 +163,11 @@ input[type="checkbox"]:checked + .color-label {
 .more-items img {
   width: 100px;
   height: 100px;
-  border: 1px solid grey;
+  border: 1px solid rgb(22, 22, 22);
   opacity: 0.5;
+  margin: 0.5em;
+
+  border-radius: 8px;
 }
 .more-items img:hover {
   opacity: 1;
