@@ -28,17 +28,36 @@
         <a href="#news">News</a>
       </ul>
 
-      <a href="#cart">
+      <a class="cart-icon" href="">
         <i class="fa-solid fa-bag-shopping"></i>
       </a>
     </nav>
 
     <div class="page" id="home">
-      <h1>Home</h1>
+      <div class="content">
+        <h1>Home</h1>
+        <h1>Hot Deals</h1>
+        <p>Where ypu can find all kind of decoration you need</p>
+        <a href="#shop">
+          <button class="btn-start-shop">Shop Now</button>
+        </a>
+      </div>
     </div>
-    <div class="page" id="shop"></div>
-    <div class="page" id="products"></div>
-    <div class="page" id="news"></div>
+    <div class="page" id="shop">
+      <h1>shop</h1>
+    </div>
+    <div class="page" id="products">
+      <h1>Prosucts</h1>
+    </div>
+    <div class="page" id="news">
+      <div class="news-content">
+        <h1>Subscribe to our news letter</h1>
+        <form class="user-form">
+          <input type="email" placeholder="subscribe to our news" />
+          <input type="submit" value="SUBSCRIBE" />
+        </form>
+      </div>
+    </div>
     <script src="Router.js"></script>
     <script src="app.js"></script>
   </body>
