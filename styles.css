@@ -54,7 +54,6 @@ nav {
 
 /* shop page */
 #shop {
-  display: flex;
   flex-direction: column;
   justify-content: start;
   gap: 40px;
