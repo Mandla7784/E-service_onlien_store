@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 0.5em 1.5em;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.logo {
+  width: 80px;
+}
+.links {
+  display: flex;
+  gap: 30px;
+}
+
+.links a {
+  color: rgb(43, 40, 39);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: bold;
+  transition: all ease 0.32s;
+}
+
+.links a:hover {
+  color: rgb(187, 142, 17);
+}
