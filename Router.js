@@ -11,4 +11,12 @@ function showPage(pageId) {
   }
 }
 
-function router() {}
+function router() {
+  let hash = window.location.hash.slice(1) || "home"; // default to home page
+  //call showpage
+  showPage(hash);
+}
+
+// listening for hash changes
+
+window.addEventListener("hashchange", router);
