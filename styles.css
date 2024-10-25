@@ -103,3 +103,42 @@ nav {
   padding: 5px;
   cursor: pointer;
 }
+.colors {
+  display: flex;
+  gap: 20px;
+}
+.colors input {
+  width: 50px;
+}
+
+.color-checkbox {
+  display: none;
+}
+
+.color-label {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+input[type="checkbox"]:checked + .color-label {
+  border-color: #000;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.pink {
+  background-color: pink;
+}
