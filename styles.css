@@ -53,9 +53,15 @@ nav {
 }
 
 /* shop page */
+#shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 40px;
+}
 .shop-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .image {
@@ -96,11 +102,14 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 .adjust {
-  background-color: rgb(20, 190, 111);
+  background-color: rgb(9, 10, 10);
   border: none;
   padding: 5px;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
 }
 .colors {
@@ -141,4 +150,19 @@ input[type="checkbox"]:checked + .color-label {
 
 .pink {
   background-color: pink;
+}
+
+.more-items {
+  display: flex;
+
+  justify-content: center;
+}
+.more-items img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid grey;
+  opacity: 0.5;
+}
+.more-items img:hover {
+  opacity: 1;
 }
