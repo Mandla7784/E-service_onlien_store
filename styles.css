@@ -172,3 +172,12 @@ input[type="checkbox"]:checked + .color-label {
 .more-items img:hover {
   opacity: 1;
 }
+.social-mdeia {
+  margin-top: 2em;
+  display: flex;
+  gap: 0.5em;
+}
+.social-mdeia i {
+  cursor: pointer;
+  font-size: 24px;
+}
