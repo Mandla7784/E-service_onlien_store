@@ -12,6 +12,8 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="Router.js"></script>
+    <script src="app.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -118,8 +120,25 @@
         </form>
       </div>
     </div>
-    <div class="whistle-page"></div>
-    <script src="Router.js"></script>
-    <script src="app.js"></script>
+    <!-- whistle -->
+    <div class="whistle-page">
+      <form class="form-login">
+        <span class="form-quite"><i class="fa-solid fa-x"></i></span>
+        <h1>Log in to your account</h1>
+        <div class="continue-with">
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-twitter"></i>
+        </div>
+        <div>
+          <input type="email" placeholder="Email address" required />
+          <input type="password" placeholder="Password" required />
+          <button id="btn-login">Log in</button>
+        </div>
+        <div class="no-account">
+          <p>No account? <a id="sign-up">Sign Up</a></p>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

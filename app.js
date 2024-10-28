@@ -12,3 +12,13 @@ const headsets = document.querySelectorAll(".heads");
 headsets.forEach((headset) => {
   headset.addEventListener("click", chnageImage);
 });
+
+// Log in FORM
+window.addEventListener("DOMContentLoaded", () => {
+  const btnFormQuit = document.querySelector(".form-quite");
+  btnFormQuit.addEventListener("click", function () {
+    // whistle-page
+    const page = document.querySelector(".whistle-page");
+    page.classList.add("hide");
+  });
+});
