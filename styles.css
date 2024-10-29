@@ -8,7 +8,7 @@
 nav {
   top: 0;
   width: 100%;
-  position: sticky;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +47,7 @@ nav {
   width: 100%;
   height: 100vh;
   justify-content: center;
-  padding: 10px;
+  padding: 4em;
 }
 .active {
   display: flex;
@@ -95,7 +95,7 @@ nav {
   justify-content: space-between;
 }
 #cart-btn {
-  background-color: black;
+  background-color: rgb(40, 102, 68);
   width: 100%;
   color: white;
   border: none;
@@ -185,7 +185,7 @@ input[type="checkbox"]:checked + .color-label {
 
 body {
   position: relative;
-  background-color: #f0f4f8;
+  /* background-color: #f0f4f8; */
   font-family: "Arial", sans-serif;
   display: flex;
   flex-direction: column;
@@ -213,6 +213,14 @@ body {
   padding: 2rem;
   width: 300px;
   text-align: center;
+  position: relative;
+}
+.form-quite {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  cursor: pointer;
+  padding: 1em;
 }
 
 h1 {
