@@ -62,6 +62,7 @@ nav {
 .shop-content {
   display: flex;
   justify-content: space-around;
+  padding: 40px;
 }
 
 .hero-image {
