@@ -188,6 +188,12 @@ body {
   height: 100vh;
   margin: 0;
 }
+
+.news-content{
+  margin: 8em 0;
+}
+
+
 /* whistle */
 .whistle-page {
   position: absolute;
