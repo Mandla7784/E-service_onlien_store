@@ -3,7 +3,7 @@ function renderProductDetails(){
 
     fetch("data.json")
     .then(resposne => {
-        if(!resposne == ok){
+        if(!resposne.ok){
             throw new Error("HTTP eror", resposne.status)
         }
          return resposne.json()
