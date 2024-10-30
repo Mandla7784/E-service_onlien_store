@@ -1,4 +1,11 @@
 // Product Details
+
+function getProductDeatls(){
+    
+}
+
+
+
 function renderProductDetails(){
 
     fetch("data.json")
@@ -15,6 +22,5 @@ function renderProductDetails(){
     })
 
 }
-
 
 renderProductDetails()
