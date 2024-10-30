@@ -1,13 +1,6 @@
 // Product Details
 
 function getProductDeatls(){
-    
-}
-
-
-
-function renderProductDetails(){
-
     fetch("data.json")
     .then(resposne => {
         if(!resposne.ok){
@@ -20,6 +13,13 @@ function renderProductDetails(){
     }).catch(error => {
         console.log(error)
     })
+}
+
+
+function renderProductDetails(){
+    const details = getProductDeatls()
+    console.log(details)
+
 
 }
 
