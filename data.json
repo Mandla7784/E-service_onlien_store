@@ -10,4 +10,29 @@
         "Wireless communication technology": "Bluetooth",
         "Included components": "1 x Amplify Stellar Series Bluetooth Headphones, Black"
     }
+    ,{
+        "AboutThisItem": [
+            {
+                "Feature": "Bluetooth 5.3 Connectivity",
+                "Description": "Ensures a stable and reliable connection, allowing users to connect multiple devices simultaneously."
+            },
+            {
+                "Feature": "Comfortable Design",
+                "Description": "Large and soft padded ear cups provide extended comfort for prolonged use."
+            },
+            {
+                "Feature": "Built-in SD Card Reader and FM Radio",
+                "Description": "Offers playback without needing a phone, enhancing versatility."
+            },
+            {
+                "Feature": "Auxiliary Input",
+                "Description": "Allows for wired playback, providing an alternative connection method."
+            },
+            {
+                "Feature": "Hands-free Calling Capability",
+                "Description": "Enables users to take calls without needing to hold their phone."
+            }
+        ]
+    }
+    
 ]
