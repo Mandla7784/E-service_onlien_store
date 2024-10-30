@@ -296,3 +296,8 @@ button:hover {
   display: none;
   transition: all ease 0.3s;
 }
+.span{
+  color: #000;
+  font-weight: bold;
+
+}
