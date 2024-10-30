@@ -33,7 +33,14 @@ function renderProductDetails(data){
         // Append the new HTML to the existing content
         productDetails.innerHTML += html; 
     });
-    
+     
+    // about this item
+
+    const aboutDetails = Object.entries(details[1])
+    let detail = aboutDetails[0]
+    let header = detail["AboutThisItem"]
+    console.log(header)
+  
 
 
 }
