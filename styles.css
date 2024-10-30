@@ -102,20 +102,13 @@ nav {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 2em 0;
 }
-.change-cart {
+
+.buy-item{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.adjust {
-  background-color: rgb(9, 10, 10);
-  border: none;
-  padding: 5px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+  flex-direction: column;
+  gap: 0.5em;
 }
 .colors {
   display: flex;
