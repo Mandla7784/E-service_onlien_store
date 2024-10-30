@@ -67,15 +67,19 @@ nav {
 
 .hero-image {
   transition: all ease 0.3s;
+  width: 600px;
+  height: 600px;
+
+
 }
 .image {
-  width: 400px;
-  height: 50vh;
+   width: 600px;
   transition: all ease-in-out 0.3s;
+  display: flex;
+
+
 }
-.image img {
-  width: 100%;
-}
+
 .price {
   color: rgb(55, 162, 224);
 }
@@ -152,12 +156,12 @@ input[type="checkbox"]:checked + .color-label {
 
 .more-items {
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
 }
 .more-items img {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   border: 1px solid rgb(22, 22, 22);
   opacity: 0.5;
   margin: 0.5em;
