@@ -73,9 +73,12 @@ nav {
 
 }
 .image {
-   width: 600px;
+   width: 850px;
   transition: all ease-in-out 0.3s;
   display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding:  0 8em;
 
 
 }
@@ -301,3 +304,18 @@ button:hover {
   font-weight: bold;
 
 }
+.new-price{
+  color: red;
+  text-decoration: line-through;
+}
+
+
+/* 
+ */
+
+
+ .details_right{
+   padding: 10px;
+   background-color: white;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+ }
