@@ -41,15 +41,13 @@ function renderFeatures (features) {
     const price_tag = document.createElement("p")
     const product_ratings = document.createElement("div")
     const stock_left = document.createElement("span")
+    const cartButton = document.createElement("button")
     card.classList.add("features-card")
-     
 
+     
+    cartButton.textContent = "ADD to Cart"
     // Elemenets classes
     features_image.classList.add("features-img")
-
-
-
-
     // details
  
     features_image.src = `${image}`
@@ -58,20 +56,14 @@ function renderFeatures (features) {
     product_ratings.textContent = `${ratings}`
     stock_left.textContent = `${stock}`
 
-
-  
     //  appending to card
 
 
     card.append(features_image , description ,price_tag , product_ratings , stock_left)
+    card.append(cartButton)
     features_div.append(card)
         
     });
-
-
-   
-   
-
 
 }
 youMightAlsoLike()

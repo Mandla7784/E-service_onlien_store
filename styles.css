@@ -104,7 +104,8 @@ nav {
 }
 #cart-btn {
   background-color: rgb(40, 102, 68);
-  width: 100%;
+  width: 50%;
+  
   color: white;
   border: none;
   border-radius: 5px;
@@ -265,7 +266,7 @@ input:focus {
 }
 
 button {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   background-color: #fde82e;
   border: none;
@@ -331,6 +332,6 @@ button:hover {
    display: flex;
  }
  .features-img{
-   width: 100%;
+   width: 400px;
    height: 400px;
  }
