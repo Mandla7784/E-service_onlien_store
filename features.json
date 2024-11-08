@@ -1,0 +1,55 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Wireless Headphones",
+        "price": 99.99,
+        "image": "https://www.audeze.com/cdn/shop/files/ADZ_Maxwell_white_3-Quarters_XB_nooverlay_1200x.jpg?v=1687383866",
+        "description": "High-quality wireless headphones with noise-cancellation.",
+        "category": "Electronics",
+        "stock": 25,
+        "rating": 4.5
+      },
+      {
+        "id": 2,
+        "name": "Smartphone",
+        "price": 599.99,
+        "image": "https://m.media-amazon.com/images/I/61nzbNdA7hL.jpg",
+        "description": "Latest model smartphone with advanced features and high-speed performance.",
+        "category": "Electronics",
+        "stock": 15,
+        "rating": 4.7
+      },
+      {
+        "id": 3,
+        "name": "Running Shoes",
+        "price": 49.99,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeHBmJxVWb4uQZDyIfW102jxgGn-v7MT1RrQ&s",
+        "description": "Comfortable and lightweight running shoes for all terrains.",
+        "category": "Sportswear",
+        "stock": 50,
+        "rating": 4.3
+      },
+      {
+        "id": 4,
+        "name": "Gaming Console",
+        "price": 299.99,
+        "image": "https://i.gadgets360cdn.com/large/ps4_slim__1556798795596.jpg",
+        "description": "Next-gen gaming console with stunning graphics and immersive gameplay.",
+        "category": "Gaming",
+        "stock": 10,
+        "rating": 4.8
+      },
+      {
+        "id": 5,
+        "name": "Blender",
+        "price": 29.99,
+        "image": "https://images.philips.com/is/image/philipsconsumer/vrs_47cd520ca5b7aa8910c3d76ab1febe9353e1af34?wid=700&hei=700&$pnglarge$",
+        "description": "Efficient kitchen blender with multiple speed settings and a sleek design.",
+        "category": "Home Appliances",
+        "stock": 40,
+        "rating": 4.2
+      }
+    ]
+  }
+  

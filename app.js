@@ -19,3 +19,8 @@ window.addEventListener("DOMContentLoaded", () => {
   btnFormQuit.addEventListener("click", function () {
     page.classList.add("hide");
   });
+
+
+
+});
+
