@@ -69,10 +69,5 @@ function renderFeatures (features) {
     document.querySelector(".features-rendered").appendChild(card);
 });
   
-  
-   
-   
-
-
 }
 youMightAlsoLike()
