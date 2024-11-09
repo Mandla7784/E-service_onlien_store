@@ -13,8 +13,6 @@ function getFeatures(path){
        
         renderFeatures(data)
     })
-
-
 }
 
 // calling features function to render into the DOM
@@ -32,43 +30,46 @@ function renderFeatures (features) {
     console.log(my_features)
     // rendering my features 
     my_features.forEach(item => {
-        const {name , description , price , ratings , category ,stock , image } = item
+    const { name, description, price, ratings, category, stock, image } = item;
 
-    const card = document.createElement("div")
+    // Create card container
+    const card = document.createElement("div");
+    card.classList.add("features-card");
+
+    // Create elements for the card
+    const features_image = document.createElement("img");
+    const description_tag = document.createElement("h3");
+    const price_tag = document.createElement("p");
+    const product_ratings = document.createElement("div");
+    const stock_left = document.createElement("span");
+    const addToCartButton = document.createElement("button");
+
+    // Set attributes and content
+    features_image.classList.add("features-img");
+    features_image.src = image;
+    features_image.alt = name; // Accessibility feature
+    description_tag.textContent = name; // 
+    price_tag.textContent = `$${price.toFixed(2)}`; // Format price
+    product_ratings.textContent = `Ratings: ${ratings}`;
+    stock_left.textContent = `In Stock: ${stock}`;
     
-    const description__tag = document.createElement("h3")
-    const features_image = document.createElement("img")
-    const price_tag = document.createElement("p")
-    const product_ratings = document.createElement("div")
-    const stock_left = document.createElement("span")
-    card.classList.add("features-card")
-     
+    // Button setup
+    addToCartButton.classList.add("add-to-cart");
+    addToCartButton.textContent = "Add to Cart";
+    
+    // Append elements to card
+    card.appendChild(features_image);
+    card.appendChild(description_tag);
+    card.appendChild(price_tag);
+    card.appendChild(product_ratings);
+    card.appendChild(stock_left);
+    card.appendChild(addToCartButton);
 
-    // Elemenets classes
-    features_image.classList.add("features-img")
-
-
-
-
-    // details
- 
-    features_image.src = `${image}`
-    description__tag.textContent = `${description}`
-    price_tag.textContent = `${price}`
-    product_ratings.textContent = `${ratings}`
-    stock_left.textContent = `${stock}`
-
-
+    // Append the card to a parent container in the DOM
+    document.querySelector(".features-rendered").appendChild(card);
+});
   
-    //  appending to card
-
-
-    card.append(features_image , description ,price_tag , product_ratings , stock_left)
-    features_div.append(card)
-        
-    });
-
-
+  
    
    
 
