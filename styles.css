@@ -76,9 +76,16 @@ h1 {
 }
 
 /* Home Page */
+#home{
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #home .content {
   text-align: center;
   margin-top: 4em;
+  
 }
 
 #home p {
@@ -89,7 +96,7 @@ h1 {
 
 .btn-start-shop {
   padding: 12px 30px;
-  background-color: rgb(55, 162, 224); 
+  background-color: rgb(34, 35, 36); 
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -98,7 +105,7 @@ h1 {
 }
 
 .btn-start-shop:hover {
-  background-color: rgb(45, 137, 188); 
+  background-color: rgb(34, 35, 36); 
 }
 
 /* Shop Page */
@@ -158,6 +165,9 @@ h1 {
   margin-bottom: 1em;
 }
 
+.hide{
+  display: none;
+}
 .color-label {
   width: 40px;
   height: 40px;
@@ -290,13 +300,14 @@ input[type="checkbox"]:checked + .color-label {
   left: 0;
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .form-login {
+  position: relative;
   background: white;
   border-radius: 8px;
   padding: 2rem;
@@ -304,6 +315,7 @@ input[type="checkbox"]:checked + .color-label {
   max-width: 400px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-top: 60px
 }
 
 .form-quite {
@@ -387,7 +399,13 @@ button:hover {
   flex-direction: column;
   background-color: white;
   padding: 20px;
+  justify-content: space-between;
 
+
+}
+.features-card img{
+  width: 150px;
+  height: 150px;
 }
 
 
