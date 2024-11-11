@@ -13,8 +13,6 @@ function getFeatures(path){
        
         renderFeatures(data)
     })
-
-
 }
 
 // calling features function to render into the DOM
@@ -32,11 +30,16 @@ function renderFeatures (features) {
     console.log(my_features)
     // rendering my features 
     my_features.forEach(item => {
-        const {name , description , price , ratings , category ,stock , image } = item
+    const { name, description, price, ratings, category, stock, image } = item;
 
-    const card = document.createElement("div")
-    
-    const description__tag = document.createElement("h3")
+    // Create card container
+    const card = document.createElement("div");
+    card.classList.add("features-card");
+
+
+
+
+    let  description__tag = document.createElement("h3")
     const features_image = document.createElement("img")
     const price_tag = document.createElement("p")
     const product_ratings = document.createElement("div")
@@ -44,26 +47,33 @@ function renderFeatures (features) {
     const cartButton = document.createElement("button")
     card.classList.add("features-card")
 
+  
+     // Set attributes and content
+     features_image.classList.add("features-img");
+     features_image.src = `${image}`
+     features_image.alt = name; // Accessibility feature
+     description__tag.textContent = `${description.slice(0 ,10)}...`; // 
+     price_tag.textContent = `$${price.toFixed(2)}`; // Format price
+     product_ratings.textContent = `Ratings: ${ratings}`;
+     stock_left.textContent = `In Stock: ${stock}`;
      
-    cartButton.textContent = "ADD to Cart"
-    // Elemenets classes
-    features_image.classList.add("features-img")
-    // details
- 
-    features_image.src = `${image}`
-    description__tag.textContent = `${description}`
-    price_tag.textContent = `${price}`
-    product_ratings.textContent = `${ratings}`
-    stock_left.textContent = `${stock}`
 
-    //  appending to card
+    // Button setup
+    cartButton.classList.add("adding-to-cart");
+    cartButton.textContent = "Add to Cart";
+    
+    // Append elements to card
+    card.appendChild(features_image);
+    card.appendChild(description__tag);
+    card.appendChild(price_tag);
+    card.appendChild(product_ratings);
+    card.appendChild(stock_left);
+    card.appendChild(cartButton);
 
-
-    card.append(features_image , description ,price_tag , product_ratings , stock_left)
-    card.append(cartButton)
-    features_div.append(card)
-        
-    });
-
+    // Append the card to a parent container in the DOM
+    document.querySelector(".features-rendered").appendChild(card);
 }
+    )}
+
+
 youMightAlsoLike()
