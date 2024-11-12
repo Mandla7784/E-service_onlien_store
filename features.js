@@ -25,7 +25,7 @@ function youMightAlsoLike(){
 
 function renderFeatures (features) {
     const my_features  = features["products"]
-    const features_div = document.querySelector(".features-rendered")
+
 
     console.log(my_features)
     // rendering my features 
