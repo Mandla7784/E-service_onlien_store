@@ -17,12 +17,8 @@ window.addEventListener("DOMContentLoaded", () => {
   // Log in FORM
   const btnFormQuit = document.querySelector(".form-quite");
   btnFormQuit.addEventListener("click", function () {
-    console.log("clicked")
+    console.log("clicked");
     page.classList.add("hide");
-    page.classList.remove("flex")
+    page.classList.remove("flex");
   });
-
-
-
 });
-
