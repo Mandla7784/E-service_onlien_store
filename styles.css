@@ -76,28 +76,33 @@ h1 {
 }
 
 /* Home Page */
-#home{
-
+#home {
   flex-direction: column;
   justify-content: center;
+
   align-items: center;
+  background-image: url("./public/Home.jpg");
+  background-repeat: no-repeat;
+  backdrop-filter: 10px;
 }
 #home .content {
   text-align: center;
   margin-top: 4em;
-  
+  color: rgb(39, 37, 37) !important;
 }
 
 #home p {
   font-size: 1.2em;
-  color: #555;
   margin-bottom: 1.5em;
 }
-
+#hom,
+h1 {
+  color: rgb(95, 92, 92);
+}
 .btn-start-shop {
   padding: 12px 30px;
-  background-color: rgb(34, 35, 36); 
-  color: white;
+  background-color: rgb(19, 19, 20);
+  color: rgb(243, 233, 233);
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
@@ -105,14 +110,15 @@ h1 {
 }
 
 .btn-start-shop:hover {
-  background-color: rgb(34, 35, 36); 
+  background-color: rgb(39, 38, 38);
 }
 
 /* Shop Page */
 #shop {
   flex-direction: column;
   gap: 2em;
-  align-items: center;margin-top: 4em;
+  align-items: center;
+  margin-top: 4em;
 }
 
 .shop-content {
@@ -135,9 +141,8 @@ h1 {
 }
 
 .hero-image {
-
   max-width: 500px;
-  height:400px;
+  height: 400px;
 
   transition: transform 0.3s ease;
 }
@@ -145,7 +150,7 @@ h1 {
 .hero-image:hover {
   transform: scale(1.05);
 }
-.more-items{
+.more-items {
   display: flex;
   flex-direction: column;
 }
@@ -177,7 +182,7 @@ h1 {
   margin-bottom: 1em;
 }
 
-.hide{
+.hide {
   display: none;
 }
 .color-label {
@@ -217,7 +222,9 @@ input[type="checkbox"]:checked + .color-label {
   text-decoration: line-through;
 }
 
-#cart-btn, #btn-buynow, #btn-whistle {
+#cart-btn,
+#btn-buynow,
+#btn-whistle {
   width: 100%;
   padding: 12px;
   background-color: rgb(48, 46, 46);
@@ -230,8 +237,10 @@ input[type="checkbox"]:checked + .color-label {
   transition: background-color 0.3s ease;
 }
 
-#cart-btn:hover, #btn-buynow:hover, #btn-whistle:hover {
-  background-color: rgb(32, 81, 59); 
+#cart-btn:hover,
+#btn-buynow:hover,
+#btn-whistle:hover {
+  background-color: rgb(32, 81, 59);
 }
 
 .social-media {
@@ -294,7 +303,7 @@ input[type="checkbox"]:checked + .color-label {
 
 #submit-subscriprion {
   padding: 12px 30px;
-  background-color: rgb(34, 35, 36); 
+  background-color: rgb(34, 35, 36);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -302,7 +311,7 @@ input[type="checkbox"]:checked + .color-label {
 }
 
 #submit-subscriprion:hover {
-  background-color: rgb(29, 30, 31); 
+  background-color: rgb(29, 30, 31);
 }
 
 /* Whistle Login */
@@ -327,7 +336,7 @@ input[type="checkbox"]:checked + .color-label {
   max-width: 400px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 60px
+  margin-top: 60px;
 }
 
 .form-quite {
@@ -361,14 +370,14 @@ input {
 }
 
 input:focus {
-  border-color:   #ecc92c;
+  border-color: #ecc92c;
   outline: none;
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background-color: rgb(48, 46, 46); 
+  background-color: rgb(48, 46, 46);
   border: none;
   color: white;
   font-size: 16px;
@@ -379,7 +388,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(32, 81, 59); 
+  background-color: rgb(32, 81, 59);
 }
 
 .no-account {
@@ -387,7 +396,7 @@ button:hover {
 }
 
 .no-account a {
- color: #ecc92c;
+  color: #ecc92c;
   text-decoration: none;
 }
 
@@ -397,14 +406,13 @@ button:hover {
 
 /* my features cards */
 
-
-.features-rendered{
+.features-rendered {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.features-card{
+.features-card {
   width: 300px;
   height: 400px;
   display: flex;
@@ -412,14 +420,11 @@ button:hover {
   background-color: white;
   padding: 20px;
   justify-content: space-between;
-
-
 }
-.features-card img{
+.features-card img {
   width: 150px;
   height: 150px;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -461,7 +466,10 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-  .btn-start-shop, #cart-btn, #btn-buynow, #btn-whistle {
+  .btn-start-shop,
+  #cart-btn,
+  #btn-buynow,
+  #btn-whistle {
     width: 100%;
   }
 
