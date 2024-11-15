@@ -281,7 +281,8 @@ input[type="checkbox"]:checked + .color-label {
 
 .news-content h1 {
   font-size: 32px;
-  margin-bottom: 1.5em;
+  margin-block-end: 1.5em;
+
   color: #333;
 }
 
@@ -289,7 +290,7 @@ input[type="checkbox"]:checked + .color-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-block-start: 50px;
 }
 
 .user_subscription_email {
