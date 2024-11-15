@@ -448,7 +448,7 @@ button:hover {
   }
 
   .details_right {
-    width: 100%;
+    inline-size: 100%;
     padding: 15px;
   }
 
