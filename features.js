@@ -56,7 +56,14 @@ function renderFeatures(features) {
 
     cartButton.addEventListener("click", function () {
       addingToCart(this);
-      this.textContent = "Hey";
+      setTimeout(() => {
+        this.textContent = "Succesfully Added to Cart !";
+        this.style.backgroundColor = "green";
+      }, 1000);
+      setInterval(() => {
+        this.textContent = "Add to Cart";
+        this.style.backgroundColor = "";
+      }, 3000);
     });
 
     // Append elements to card
