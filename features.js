@@ -37,7 +37,7 @@ function renderFeatures(features) {
     const price_tag = document.createElement("p");
     const product_ratings = document.createElement("div");
     const stock_left = document.createElement("span");
-    const cartButton = document.createElement("button");
+
     card.classList.add("features-card");
 
     // Set attributes and content
@@ -48,12 +48,16 @@ function renderFeatures(features) {
     price_tag.textContent = `$${price.toFixed(2)}`; // Format price
     product_ratings.textContent = `Ratings: ${ratings}`;
     stock_left.textContent = `In Stock: ${stock}`;
-
+    const cartButton = document.createElement("button");
     // Button setup
     cartButton.classList.add("adding-to-cart");
     cartButton.textContent = "Add to Cart";
     // adding to cart
-    cartButton.addEventListener("click", addingToCart);
+
+    cartButton.addEventListener("click", function () {
+      addingToCart(this);
+      this.textContent = "Hey";
+    });
 
     // Append elements to card
     card.appendChild(features_image);
@@ -68,9 +72,11 @@ function renderFeatures(features) {
   });
   // Adding features to Cart
 
-  function addingToCart() {
-    const item = this.closest(".features-card");
-    console.log(item);
+  function addingToCart(button) {
+    if (button && button.closest) {
+      const item = button.closest(".features-card");
+      console.log("Item added to cart:", item);
+    }
   }
 }
 
