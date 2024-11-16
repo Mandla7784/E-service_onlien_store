@@ -22,8 +22,6 @@ function renderProductDetails(data) {
   const brandDetails = Object.entries(details[0]);
 
   brandDetails.forEach((detail) => {
-    console.log(detail[0], detail[1]);
-
     const html = `
             <p class="details"> <span class="span">${detail[0]}</span>: ${detail[1]}</p>
         `;
