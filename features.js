@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(() => {
           this.textContent = "Add to Cart";
           this.style.backgroundColor = "";
-        }, 3000);
+        }, 2000);
       });
 
       // Append elements to card

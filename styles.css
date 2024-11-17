@@ -10,19 +10,19 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100vh;
+  min-block-size: 100vh;
   background-color: #f4f4f4;
   margin: 0;
 }
 
 nav {
-  top: 0;
-  width: 100%;
+  inset-block-start: 0;
+  inline-size: 100%;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  block-size: 100px;
   padding: 1em 2em;
   background-color: white;
   z-index: 999;
@@ -31,7 +31,7 @@ nav {
 }
 
 .logo {
-  width: 80px;
+  inline-size: 80px;
   object-fit: contain;
 }
 
@@ -60,7 +60,7 @@ nav {
 /* Pages styles */
 .page {
   display: none;
-  width: 100%;
+  inline-size: 100%;
   padding: 4em 2em;
 }
 
@@ -70,7 +70,7 @@ nav {
 
 h1 {
   font-size: 36px;
-  margin-bottom: 1.5em;
+  margin-block-end: 1.5em;
   color: #333;
   text-align: center;
 }
@@ -87,13 +87,13 @@ h1 {
 }
 #home .content {
   text-align: center;
-  margin-top: 4em;
+  margin-block-start: 4em;
   color: rgb(39, 37, 37) !important;
 }
 
 #home p {
   font-size: 1.2em;
-  margin-bottom: 1.5em;
+  margin-block-end: 1.5em;
 }
 #hom,
 h1 {
@@ -118,7 +118,7 @@ h1 {
   flex-direction: column;
   gap: 2em;
   align-items: center;
-  margin-top: 4em;
+  margin-block-start: 4em;
 }
 
 .shop-content {
@@ -126,7 +126,7 @@ h1 {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;
+  inline-size: 100%;
 }
 
 .image {
@@ -135,14 +135,14 @@ h1 {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 500px;
-  max-width: 600px;
+  inline-size: 100%;
+  block-size: 500px;
+  max-inline-size: 600px;
 }
 
 .hero-image {
-  max-width: 500px;
-  height: 400px;
+  max-inline-size: 500px;
+  block-size: 400px;
 
   transition: transform 0.3s ease;
 }
@@ -155,8 +155,8 @@ h1 {
   flex-direction: column;
 }
 .more-items img {
-  width: 50px;
-  height: 50px;
+  inline-size: 50px;
+  block-size: 50px;
   border: 1px solid grey;
   opacity: 0.6;
   margin: 3px;
@@ -166,25 +166,25 @@ h1 {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-inline-size: 400px;
   margin: auto;
 }
 
 h2 {
   font-size: 24px;
   color: #333;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
 }
 
 .color-section {
-  margin-bottom: 20px;
+  margin-block-end: 20px;
 }
 
 .color-section p {
   font-size: 16px;
   font-weight: bold;
   color: #444;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .colors {
@@ -203,10 +203,10 @@ input[type="checkbox"] {
 }
 
 .color-label {
-  width: 30px;
-  height: 30px;
+  inline-size: 30px;
+  block-size: 30px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-inline-end: 10px;
   border: 2px solid #ccc;
 }
 
@@ -231,14 +231,14 @@ input[type="checkbox"]:checked + .color-label {
   font-size: 28px;
   font-weight: bold;
   color: #000;
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 .old-price {
   font-size: 16px;
   color: #777;
   text-decoration: line-through;
-  margin-top: 10px;
+  margin-block-start: 10px;
 }
 
 .new-price {
@@ -249,16 +249,16 @@ input[type="checkbox"]:checked + .color-label {
 .in-stock {
   font-size: 16px;
   color: #2ecc71;
-  margin-top: 10px;
+  margin-block-start: 10px;
 }
 
 .finance-options {
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 .finance-options p {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 button {
@@ -269,7 +269,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-block-start: 10px;
   transition: background-color 0.3s ease;
 }
 
@@ -283,16 +283,16 @@ button:disabled {
 }
 
 .buy-item {
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 .buy-item button {
   background-color: #27ae60;
-  margin-right: 10px;
+  margin-inline-end: 10px;
 }
 
 .buy-item .social-media {
-  margin-top: 20px;
+  margin-block-start: 20px;
   display: flex;
   gap: 15px;
 }
@@ -311,8 +311,8 @@ button:disabled {
   display: none;
 }
 .color-label {
-  width: 40px;
-  height: 40px;
+  inline-size: 40px;
+  block-size: 40px;
   border-radius: 50%;
   cursor: pointer;
   transition: border-color 0.3s;
@@ -339,7 +339,7 @@ input[type="checkbox"]:checked + .color-label {
 .price {
   color: rgb(55, 162, 224);
   font-size: 24px;
-  margin-bottom: 1em;
+  margin-block-end: 1em;
 }
 
 .new-price {
@@ -350,7 +350,7 @@ input[type="checkbox"]:checked + .color-label {
 #cart-btn,
 #btn-buynow,
 #btn-whistle {
-  width: 100%;
+  inline-size: 100%;
   padding: 12px;
   background-color: rgb(48, 46, 46);
   border: none;
@@ -358,7 +358,7 @@ input[type="checkbox"]:checked + .color-label {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  margin-bottom: 1em;
+  margin-block-end: 1em;
   transition: background-color 0.3s ease;
 }
 
@@ -371,7 +371,7 @@ input[type="checkbox"]:checked + .color-label {
 .social-media {
   display: flex;
   gap: 0.5em;
-  margin-top: 1em;
+  margin-block-start: 1em;
   justify-content: center;
 }
 
@@ -394,7 +394,7 @@ input[type="checkbox"]:checked + .color-label {
 
 #products h1 {
   font-size: 32px;
-  margin-bottom: 1em;
+  margin-block-end: 1em;
   color: #333;
 }
 
@@ -420,9 +420,9 @@ input[type="checkbox"]:checked + .color-label {
 
 .user_subscription_email {
   padding: 12px;
-  width: 60%;
-  max-width: 400px;
-  margin-bottom: 1em;
+  inline-size: 60%;
+  max-inline-size: 400px;
+  margin-block-end: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -443,10 +443,10 @@ input[type="checkbox"]:checked + .color-label {
 /* Whistle Login */
 .whistle-page {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100vh;
   display: flex;
 
   justify-content: center;
@@ -462,17 +462,17 @@ input[type="checkbox"]:checked + .color-label {
   background: white;
   border-radius: 8px;
   padding: 2rem;
-  width: 100%;
-  max-width: 400px;
+  inline-size: 100%;
+  max-inline-size: 400px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 60px;
+  margin-block-start: 60px;
 }
 
 .form-quite {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
   cursor: pointer;
   font-size: 20px;
   color: #333;
@@ -481,7 +481,7 @@ input[type="checkbox"]:checked + .color-label {
 .continue-with {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .continue-with i {
@@ -491,7 +491,7 @@ input[type="checkbox"]:checked + .color-label {
 }
 
 input {
-  width: 100%;
+  inline-size: 100%;
   padding: 12px;
   margin: 1rem 0;
   border: 1px solid #ccc;
@@ -505,7 +505,7 @@ input:focus {
 }
 
 button {
-  width: 100%;
+  inline-size: 100%;
   padding: 12px;
   background-color: rgb(48, 46, 46);
   border: none;
@@ -513,7 +513,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  margin-bottom: 1em;
+  margin-block-end: 1em;
   transition: background-color 0.3s ease;
 }
 
@@ -573,8 +573,8 @@ button:hover {
   }
 
   .hero-image {
-    width: 100%;
-    height: auto;
+    inline-size: 100%;
+    block-size: auto;
   }
 
   .details_right {
@@ -585,7 +585,7 @@ button:hover {
   .shop-content {
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    inline-size: 100%;
     background-color: red;
   }
 
@@ -600,16 +600,16 @@ button:hover {
   #cart-btn,
   #btn-buynow,
   #btn-whistle {
-    width: 100%;
+    inline-size: 100%;
   }
 
   .hero-image {
-    width: 100%;
-    height: auto;
+    inline-size: 100%;
+    block-size: auto;
   }
 
   .details_right {
-    width: 100%;
+    inline-size: 100%;
     padding: 15px;
   }
 }
