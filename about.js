@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return resposne.json();
       })
       .then((data) => {
-        console.log(data);
         renderProductDetails(data); // call render and parse data
       });
   }
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutDetails = Object.entries(details[1]);
     let detail = aboutDetails[0];
     let header = detail["AboutThisItem"];
-    console.log(header);
   }
 
   getProductDetails();

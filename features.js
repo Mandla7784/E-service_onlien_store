@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderFeatures(features) {
     const my_features = features["products"];
 
-    console.log(my_features);
     // rendering my features
     my_features.forEach((item) => {
       const { name, description, price, ratings, category, stock, image } =
