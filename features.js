@@ -88,10 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // item image
         const imageItem = item.querySelector("img");
-        if (imageItem) {
-          const imageSRC = imageItem.src;
+        const itemPrice = item.querySelector("p");
 
-          cartiItems.push(imageSRC);
+        if (imageItem && itemPrice) {
+          const imageSRC = imageItem.src;
+          const price = itemPrice.textContent;
+          const my_item = {
+            pri: price,
+            img: imageSRC,
+          };
+
+          cartiItems.push(object);
 
           // Setting to localstorage database
           localStorage.setItem("cartitems", JSON.stringify(cartiItems));
