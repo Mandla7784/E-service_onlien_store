@@ -5,6 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     cartPAGE.innerHTML = /*html*/ `
     
 
+  <!-- For now everythings is hardcoded  so we need to work on the cart grid , and render a cart item once a customer clicks pn
+   
+   on add to cart 
+   we can achive this by storing our items to localstoarge and have a subscibion function that will subscribe or read form the local storage
+   as our server and render those items back to cart page
+
+
+
+  
+  -->
 <div class="shopping-cart">
        <h1>Shopping Cart</h1>
 
@@ -19,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <div class="product">
     <div class="product-image">
-      <img src="./public/01.jbl_tune_670nc_product_image_hero_black_ecommerce_5884.png">
+      <img src="">
     </div>
     <div class="product-details">
       <div class="product-title">item.name</div>
