@@ -86,10 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (button && button.closest) {
         const item = button.closest(".features-card");
 
-        cartiItems.push(item.outerHTML.image);
-        // Setting to localstorage database
-        localStorage.setItem("cartitems", JSON.stringify(cartiItems));
-        console.log(cartiItems);
+        // item image
+        const imageItem = item.querySelector("img");
+        if (imageItem) {
+          const imageSRC = imageItem.src;
+          console.log(imageSRC);
+          cartiItems.push(imageSRC);
+
+          // Setting to localstorage database
+          localStorage.setItem("cartitems", JSON.stringify(cartiItems));
+          console.log(cartiItems);
+        }
       }
     }
   }
