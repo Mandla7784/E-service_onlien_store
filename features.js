@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             img: imageSRC,
           };
 
-          cartiItems.push(object);
+          cartiItems.push(my_item);
 
           // Setting to localstorage database
           localStorage.setItem("cartitems", JSON.stringify(cartiItems));
