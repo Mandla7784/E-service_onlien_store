@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-  function readingDataFromLocalStorage() {}
+  function readingDataFromLocalStorage() {
+    const items_to_be_rendered_on_cart_page =
+      JSON.parse(localStorage.getItem("cartitems")) || [];
+    const items = Object.values(items_to_be_rendered_on_cart_page);
+    items.forEach((item) => {
+      console.log(item);
+    });
+  }
+
+  readingDataFromLocalStorage();
+
   const cartPAGE = document.querySelector(".shopping-cart");
   function renderCartItems() {
     cartPAGE.innerHTML = /*html*/ `
