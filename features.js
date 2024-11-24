@@ -85,12 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function addingToCart(button) {
       if (button && button.closest) {
         const item = button.closest(".features-card");
-        cartiItems.push(item);
+
+        cartiItems.push(item.outerHTML);
+        // Setting to localstorage database
+        localStorage.setItem("cartitems", JSON.stringify(cartiItems));
+        console.log(cartiItems);
       }
     }
   }
 
-  console.log(cartiItems);
   //
   youMightAlsoLike();
 });
