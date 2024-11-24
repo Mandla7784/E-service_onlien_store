@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageItem = item.querySelector("img");
         if (imageItem) {
           const imageSRC = imageItem.src;
-          console.log(imageSRC);
+
           cartiItems.push(imageSRC);
 
           // Setting to localstorage database
