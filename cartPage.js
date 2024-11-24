@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const items_to_be_rendered_on_cart_page =
       JSON.parse(localStorage.getItem("cartitems")) || [];
     const items = Object.values(items_to_be_rendered_on_cart_page);
-    items.forEach((item) => {
-      console.log(item);
-    });
+    return items;
   }
 
   readingDataFromLocalStorage();
 
   const cartPAGE = document.querySelector(".shopping-cart");
   function renderCartItems() {
+    let cartItemsToBeRendered = readingDataFromLocalStorage();
+
+    console.log(cartItemsToBeRendered);
     cartPAGE.innerHTML = /*html*/ `
     
 
@@ -23,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
   -->
+
+
+
 <div class="shopping-cart">
        <h1>Shopping Cart</h1>
 
