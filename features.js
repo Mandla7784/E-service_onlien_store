@@ -82,13 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Adding features to Cart
 
+    let cartiItems = [];
     function addingToCart(button) {
       if (button && button.closest) {
         const item = button.closest(".features-card");
-        console.log("Item added to cart:", item);
+        cartiItems.push(item);
       }
     }
   }
+
+  console.log(cartiItems);
   //
   youMightAlsoLike();
 });
