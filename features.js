@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // item image
         const imageItem = item.querySelector("img");
         const itemPrice = item.querySelector("p");
+        const nameOfItem = item.querySelector("h3");
 
         if (imageItem && itemPrice) {
           const imageSRC = imageItem.src;
@@ -96,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const my_item = {
             pri: price,
             img: imageSRC,
+            name: nameOfItem.textContent,
           };
           //  adding to the cart list
           cartiItems.push(my_item);
