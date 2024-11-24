@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pri: price,
             img: imageSRC,
           };
-
+          //  adding to the cart list
           cartiItems.push(my_item);
 
           // Setting to localstorage database
