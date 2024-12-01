@@ -67,6 +67,13 @@ h1 {
   background-color: #218838;
 }
 
+.remove-product {
+  width: 300px;
+  background-color: rgb(218, 80, 80);
+}
+.remove-product:hover {
+  background-color: rgb(223, 59, 59);
+}
 @media (max-width: 600px) {
   .column-labels {
     grid-template-columns: repeat(2, 1fr);
