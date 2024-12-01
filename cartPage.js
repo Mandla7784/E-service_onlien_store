@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       renderItemsFromCart.innerHTML += /*html*/ `
         <div class="product">
           <div class="product-image">
-            <img src="${img}" alt="${name}">
+            <img class="item-image" src="${img}" alt="${name}">
           </div>
           <div class="product-details">
             <div class="product-title">${name}</div>
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="product-price">${newPrice.toFixed(2)}</div>
           <div class="product-quantity">
-            <input type="number" value="${quantity}" min="1">
+            <input placeholder="quantity..." type="number" value="${quantity}" min="1">
           </div>
           <div class="product-removal">
             <button class="remove-product" data-name="${name}">

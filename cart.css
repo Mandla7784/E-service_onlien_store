@@ -4,6 +4,10 @@ body {
   margin: 0;
   padding: 20px;
 }
+.item-image {
+  width: 200px;
+  height: 200px;
+}
 
 .shopping-cart {
   background: #fff;
