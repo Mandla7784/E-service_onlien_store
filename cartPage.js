@@ -13,17 +13,20 @@ document.addEventListener("DOMContentLoaded", function () {
     renderItemsFromCart.innerHTML = ""; // Clearing previous items
 
     let grandTotal = 0;
+    document.addEventListener("DOMContentLoaded", () => {
+      const quantity = document.getElementById("quan").value;
+      cartItemsToBeRendered.forEach((item) => {
+        const { pri, img, name } = item;
+        let itemPrice = pri.split("$")[1];
 
-    cartItemsToBeRendered.forEach((item) => {
-      const { pri, img, name, quantity } = item;
-      let itemPrice = pri.split("$")[1];
+        const newPrice = Number(itemPrice);
+        const totalPrice = newPrice * quantity;
+        console.log(totalPrice);
 
-      grandTotal += totalPrice; // Adding to grand total
-      const newPrice = Number(itemPrice);
+        grandTotal += totalPrice; // Adding to grand total
+        console.log(grandTotal, "This is price");
 
-      const totalPrice = pri * quantity;
-
-      renderItemsFromCart.innerHTML += /*html*/ `
+        renderItemsFromCart.innerHTML += /*html*/ `
         <div class="product">
           <div class="product-image">
             <img class="item-image" src="${img}" alt="${name}">
@@ -34,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="product-price">${newPrice}</div>
           <div class="product-quantity">
-            <input placeholder="quantity..." type="number" value="${quantity}" min="1">
+            <input id="quan" placeholder="quantity..." type="number" value="${quantity}" min="1">
           </div>
           <div class="product-removal">
             <button class="remove-product" data-name="${name}">
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="product-line-price">${totalPrice}</div>
         </div>
       `;
+      });
     });
 
     // Updating grand total in the totals section
