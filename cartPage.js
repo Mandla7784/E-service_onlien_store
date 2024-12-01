@@ -69,6 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const viewCart = document.querySelector(".cart-icon");
   viewCart.addEventListener("click", () => {
     cartPAGE.classList.add("active");
+    cartPAGE.classList.remove("page");
+
     renderCartItems();
   });
 });
