@@ -16,9 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cartItemsToBeRendered.forEach((item) => {
       const { pri, img, name, quantity } = item;
-      const totalPrice = pri * quantity;
+      let itemPrice = pri.split("$")[1];
+
       grandTotal += totalPrice; // Adding to grand total
-      const newPrice = parseFloat(pri);
+      const newPrice = Number(itemPrice);
+
+      const totalPrice = pri * quantity;
 
       renderItemsFromCart.innerHTML += /*html*/ `
         <div class="product">
@@ -29,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="product-title">${name}</div>
             <p class="product-description"></p>
           </div>
-          <div class="product-price">${newPrice.toFixed(2)}</div>
+          <div class="product-price">${newPrice}</div>
           <div class="product-quantity">
             <input placeholder="quantity..." type="number" value="${quantity}" min="1">
           </div>
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
               Remove
             </button>
           </div>
-          <div class="product-line-price">${totalPrice.toFixed(2)}</div>
+          <div class="product-line-price">${totalPrice}</div>
         </div>
       `;
     });
