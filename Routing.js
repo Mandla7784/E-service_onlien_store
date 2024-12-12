@@ -1,4 +1,10 @@
 //Function to navigate pages
+/**
+ * @param {*} pageId
+ * this is a routing function it gets all the elemets with an arribute class of page
+ * and the it removes an active class to hide the element
+ * checks if a particular page is active or not the it sets and  delete the attributes accordingly
+ */
 function showPage(pageId) {
   const pages = document.querySelectorAll(".page");
   pages.forEach((page) => {
