@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const imageSRC = imageItem.src;
           const price = itemPrice.textContent;
           const my_item = {
+            id: Date.now(),
             pri: price,
             img: imageSRC,
             name: nameOfItem.textContent,
