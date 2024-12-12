@@ -1,8 +1,21 @@
 const cartToggler = document.querySelector(".cart-icon");
+const cartItems = localStorage.getItem("cartitems");
+const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
+
 const shopcartitems = document.querySelector(".shop-cart-items");
 
+/**
+ *
+ * @param {} itemkey
+ * this function removes an item by id from localstorage
+ */
 function deleteitem(itemkey) {
-  localStorage.removeItem(itemkey);
+  jsonCartitems.pop(itemkey);
+  let updated = localStorage.setItem(
+    "cartitems",
+    JSON.stringify(jsonCartitems)
+  );
+  console.log(updated);
 }
 /**
  * This function is triggered when a cart icon i clicked
@@ -10,10 +23,7 @@ function deleteitem(itemkey) {
  */
 
 function viewCart() {
-  const cartItems = localStorage.getItem("cartitems");
   const totalTag = document.createElement("h2"); //grand toatl tag
-
-  const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
 
   shopcartitems.append(totalTag);
   jsonCartitems.forEach((item) => {
