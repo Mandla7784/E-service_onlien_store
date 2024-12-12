@@ -57,13 +57,4 @@ h1 {
   background-color: rgb(223, 59, 59);
 }
 @media (max-width: 600px) {
-  .column-labels {
-    grid-template-columns: repeat(2, 1fr);
-    font-size: smaller;
-  }
-
-  .totals-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
