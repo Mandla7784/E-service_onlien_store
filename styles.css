@@ -63,6 +63,15 @@ nav {
   inline-size: 100%;
   padding: 4em 2em;
 }
+.home-page .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page-hide .content {
+  /* display: none; */
+}
 
 .active {
   display: flex;
