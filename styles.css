@@ -412,10 +412,21 @@ input[type="checkbox"]:checked + .color-label {
   padding: 4em 2em;
   text-align: center;
 }
-
+.news-content {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-start: 200px;
+}
+.news-content input {
+  inline-size: 500px;
+}
 .news-content h1 {
   font-size: 32px;
   margin-block-end: 1.5em;
+  align-self: center;
 
   color: #333;
 }
@@ -552,8 +563,8 @@ button:hover {
 }
 
 .features-card {
-  width: 300px;
-  height: 400px;
+  inline-size: 300px;
+  block-size: 400px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -561,14 +572,14 @@ button:hover {
   justify-content: space-between;
 }
 .features-card img {
-  width: 150px;
-  height: 150px;
+  inline-size: 150px;
+  block-size: 150px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .logo {
-    width: 60px;
+    inline-size: 60px;
   }
 
   .links {
