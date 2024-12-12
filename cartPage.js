@@ -1,4 +1,11 @@
 const cartToggler = document.querySelector(".cart-icon");
+const closeCart = document.querySelector(".closeCartbutton");
+let shopCartDiv = document.querySelector(".shopping-cart");
+
+closeCart.onclick = () => {
+  shopCartDiv.classList.add("none");
+};
+
 const cartItems = localStorage.getItem("cartitems");
 const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
 
@@ -24,7 +31,7 @@ function deleteitem(itemkey) {
 
 function viewCart() {
   const totalTag = document.createElement("h2"); //grand toatl tag
-
+  shopCartDiv.classList.remove("none");
   shopcartitems.append(totalTag);
   jsonCartitems.forEach((item) => {
     console.log(item.id);

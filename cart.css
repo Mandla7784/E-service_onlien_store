@@ -32,7 +32,13 @@ h1 {
   text-align: center;
   color: #333;
 }
-
+.none {
+  display: none;
+}
+.closeCartbutton {
+  background: none;
+  cursor: pointer;
+}
 .checkout {
   background-color: #28a745;
   color: white;
