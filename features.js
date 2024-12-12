@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cartButton.textContent = "Add to Cart";
       // adding to cart
 
-      cartButton.addEventListener("click", function () {
+      cartButton.onclick = function () {
         addingToCart(this);
         setTimeout(() => {
           this.textContent = "Succesfully Added to Cart !";
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           this.textContent = "Add to Cart";
           this.style.backgroundColor = "";
         }, 2000);
-      });
+      };
 
       // Append elements to card
       card.appendChild(features_image);
