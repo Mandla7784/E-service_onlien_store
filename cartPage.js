@@ -8,7 +8,24 @@ function viewCart() {
   const cartItems = localStorage.getItem("cartitems");
 
   const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
-  shopcartitems.append(jsonCartitems);
+
+  jsonCartitems.forEach((item) => {
+    const { pri, name, img } = item;
+
+    const price = Number(pri.slice(1, 5));
+
+    shopcartitems.innerHTML = /*html*/ `
+        <div>
+        <p>${name}</p>
+        <p>R${price}</p>
+       <img  style="inline-size: 100px;block-size: 100px;" src= ${img}  />
+        </div>
+     
+     
+     `;
+  });
+
+  // creating dom elemsts to render
 }
 
 // events on cartToggler
