@@ -2,7 +2,7 @@ const cartToggler = document.querySelector(".cart-icon");
 const shopcartitems = document.querySelector(".shop-cart-items");
 
 function deleteitem(itemkey) {
-  console.log("Clicked");
+  console.log("Clicked", itemkey);
 }
 /**
  * This function is triggered when a cart icon i clicked
