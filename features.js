@@ -2,6 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const base_path = "features.json";
 
   // function to get features from json file
+  /**
+   *
+   * @param {*} path
+   * @returns {object} data
+   * This function fetches data from a json file and parse to the render features
+   */
   function getFeatures(path) {
     fetch(path)
       .then((response) => {
@@ -21,6 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     getFeatures(base_path);
   }
 
+  /**
+   * @param {Array} features
+   * This functions loops on the features array and for each item i will ctreate a card to
+   * render the content
+   */
   function renderFeatures(features) {
     const my_features = features["products"];
 
@@ -82,6 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Adding features to Cart
 
     let cartiItems = [];
+
+    /**
+     * @param {*} button
+     * this function takes a  a closest button to the targeted element and use it to add the data to
+     * localstorage
+     * @constant {object} my_item
+     * it creates an item with properties required to be used in order to manipulate that item
+     */
     function addingToCart(button) {
       if (button && button.closest) {
         const item = button.closest(".features-card");
