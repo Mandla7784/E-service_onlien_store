@@ -56,3 +56,45 @@ window.addEventListener("DOMContentLoaded", () => {
  * TODO: we going to intergrate our application with the payment gateway Stripe or yoco , or Paypal
  *
  */
+
+// PAYPAL
+paypal.Marks().render("#paypal-marks-container");
+
+paypal
+  .Buttons({
+    createOrder: function (data, actions) {
+      return actions.order.create({
+        purchase_units: [
+          {
+            amount: {
+              value: "10.00",
+            },
+          },
+        ],
+      });
+    },
+    onApprove: function (data, actions) {
+      return actions.order.capture().then(function (details) {
+        alert("Transaction completed by " + details.payer.name.given_name);
+      });
+    },
+  })
+  .render("#paypal-buttons-container");
+
+document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
+  el.addEventListener("change", function (event) {
+    if (event.target.value === "paypal") {
+      document.querySelector("#alternate-button-container").style.display =
+        "none";
+      document.querySelector("#paypal-buttons-container").style.display =
+        "block";
+    } else {
+      document.querySelector("#alternate-button-container").style.display =
+        "block";
+      document.querySelector("#paypal-buttons-container").style.display =
+        "none";
+    }
+  });
+});
+
+document.querySelector("#alternate-button-container").style.display = "none";
