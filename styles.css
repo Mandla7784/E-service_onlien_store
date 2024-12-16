@@ -30,6 +30,12 @@ nav {
   transition: all 0.3s ease;
 }
 
+.toggle-menu {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  display: none;
+}
 .logo {
   inline-size: 80px;
   object-fit: contain;
@@ -582,6 +588,9 @@ button:hover {
     flex-direction: column;
     height: 400px;
     justify-content: start;
+  }
+  .toggle-menu {
+    display: block;
   }
   .logo {
     inline-size: 60px;

@@ -3,6 +3,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const heroProduct = document.querySelector(".hero-image");
   const btnShop = document.querySelector(".btn-start-shop");
   const homePage = document.querySelector(".home-page");
+  const menuToggler = document.querySelector(".toggle-menu");
+  const menuIcon = document.querySelector(".fa-x");
+  //events on menu toggler
+  menuToggler.addEventListener("click", () => {
+    if (menuIcon.classList.contains("fa-x")) {
+      menuIcon.classList.remove("fa-x");
+      menuIcon.classList.add("fa-bars");
+    } else if (menuIcon.classList.contains("fa-bars")) {
+      menuIcon.classList.remove("fa-bars");
+      menuIcon.classList.add("fa-x");
+    }
+  });
 
   /**
    * The home page should display none when we activate on the shop now button
