@@ -5,17 +5,26 @@ window.addEventListener("DOMContentLoaded", () => {
   const homePage = document.querySelector(".home-page");
   const menuToggler = document.querySelector(".toggle-menu");
   const menuIcon = document.querySelector(".fa-x");
-  //events on menu toggler
+
+  // Events on menu toggler
   menuToggler.addEventListener("click", () => {
     const navbar = document.querySelector("nav");
+
+    // Toggle menu icon and navbar visibility
     if (menuIcon.classList.contains("fa-x")) {
+      // Switch to bars icon and hiding the navbar
       menuIcon.classList.remove("fa-x");
       menuIcon.classList.add("fa-bars");
-      navbar.classList.add("show");
+      navbar.classList.remove("show"); // Hiding navbar
+      navbar.classList.add("hide");
+
+      // Add hide class if necessary
     } else if (menuIcon.classList.contains("fa-bars")) {
+      // Switch to x icon and showing the navbar
       menuIcon.classList.remove("fa-bars");
       menuIcon.classList.add("fa-x");
-      navbar.classList.add("hide");
+      navbar.classList.remove("hide"); // Removing hide class
+      navbar.classList.add("show"); // Showing navbar
     }
   });
 

@@ -28,6 +28,7 @@ nav {
   z-index: 999;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .toggle-menu {
@@ -570,9 +571,11 @@ button:hover {
 
 .show {
   display: flex;
+  transform: translateX(0);
 }
 .hide {
   display: none;
+  transform: translateX(-100%);
 }
 .features-card {
   inline-size: 300px;
