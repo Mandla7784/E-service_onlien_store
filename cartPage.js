@@ -15,13 +15,11 @@ const shopcartitems = document.querySelector(".shop-cart-items");
  * @param {} itemkey
  * this function removes an item by id from localstorage
  */
-function deleteitem(itemkey) {
-  jsonCartitems.pop(itemkey);
-  let updated = localStorage.setItem(
-    "cartitems",
-    JSON.stringify(jsonCartitems)
-  );
-  console.log(updated);
+function deleteitem(itemkey, listOfItems) {
+  listOfItems.pop(itemkey);
+  let updatedItems = listOfItems.filter((item) => item.id != itemkey);
+  localStorage.setItem("cartitems", JSON.stringify(updatedItems));
+  console.log(updatedItems);
 }
 /**
  * This function is triggered when a cart icon i clicked
@@ -41,14 +39,19 @@ function viewCart(cartItems) {
     totalPrice += price;
 
     shopcartitems.innerHTML += /*html*/ `
-        <div class="cart-card">
-        <h4>${name}</h4>
-        <p>R${price.toFixed(2)}</p>
-       <img  style="inline-size: 100px;block-size: 100px;" src= ${img}  />
-      <button onclick=deleteitem(${id}) class="deletebutton" style="background-color: rgb(212, 42, 42);color: white;">delete</button>
-        </div>
+  <div class="cart-card">
+    <h4>${name}</h4>
+    <p>R${price.toFixed(2)}</p>
+    <img style="inline-size: 100px; block-size: 100px;" src="${img}" />
+    <button 
+    onclick="deleteitem(${id} , ${JSON.stringify(cartItems)})"
      
-     
+      class="deletebutton" 
+      style="background-color: rgb(212, 42, 42); color: white;">
+      delete
+    </button>
+  </div>;
+
      `;
     return totalPrice;
   });
