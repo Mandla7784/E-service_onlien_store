@@ -7,12 +7,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.querySelector(".fa-x");
   //events on menu toggler
   menuToggler.addEventListener("click", () => {
+    const navbar = document.querySelector("nav");
     if (menuIcon.classList.contains("fa-x")) {
       menuIcon.classList.remove("fa-x");
       menuIcon.classList.add("fa-bars");
+      navbar.classList.add("show");
     } else if (menuIcon.classList.contains("fa-bars")) {
       menuIcon.classList.remove("fa-bars");
       menuIcon.classList.add("fa-x");
+      navbar.classList.add("hide");
     }
   });
 
