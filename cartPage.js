@@ -8,7 +8,6 @@ closeCart.onclick = () => {
 
 const cartItems = localStorage.getItem("cartitems");
 const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
-
 const shopcartitems = document.querySelector(".shop-cart-items");
 
 /**
@@ -29,11 +28,11 @@ function deleteitem(itemkey) {
  * it subscribes from localstorage and parese tha data to render in the DOM
  */
 
-function viewCart() {
+function viewCart(cartItems) {
   const totalTag = document.createElement("h2"); //grand toatl tag
   shopCartDiv.classList.remove("none");
   shopcartitems.append(totalTag);
-  jsonCartitems.forEach((item) => {
+  cartItems.forEach((item) => {
     console.log(item.id);
     const { pri, name, img, id } = item;
     let totalPrice = 0;
@@ -57,4 +56,4 @@ function viewCart() {
 }
 
 // events on cartToggler
-cartToggler.onclick = viewCart;
+cartToggler.onclick = viewCart(jsonCartitems);
