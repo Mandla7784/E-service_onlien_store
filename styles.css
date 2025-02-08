@@ -199,14 +199,14 @@ h2 {
   margin-block-start: 20px;
 }
 
-.old-price {
+.old-price-tag {
   font-size: 16px;
   color: #777;
   text-decoration: line-through;
   margin-block-start: 10px;
 }
 
-.new-price {
+.old-price {
   font-size: 18px;
   color: #e74c3c;
 }

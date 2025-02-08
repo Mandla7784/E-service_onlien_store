@@ -50,13 +50,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/**
- * TODO: we gonna fix the cart bugs...
- *
- * TODO: we going to intergrate our application with the payment gateway Stripe or yoco , or Paypal
- *
- */
-
 // PAYPAL
 paypal.Marks().render("#paypal-marks-container");
 
