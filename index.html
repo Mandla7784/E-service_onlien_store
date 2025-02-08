@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -79,25 +80,10 @@
        <div class="details_right">
   <h2>Beats Studio Pro Wireless Headphones</h2>
 
-  <div style="display: flex;flex-direction: column;" class="color-section">
-    <a style="margin: 40px 0;" href="buynow.html" id="btn-buynow">Buy it now</a>
-    <p>Color options</p>
-    <div class="colors">
-      <label>
-        <input type="checkbox" value="black" class="color-checkbox" />
-        <span class="color-label black"></span> Black
-      </label>
-      <label>
-        <input type="checkbox" value="white" class="color-checkbox" />
-        <span class="color-label white"></span> White
-      </label>
-      <label>
-        <input type="checkbox" value="pink" class="color-checkbox" />
-        <span class="color-label pink"></span> Pink
-      </label>
-    </div>
-  </div>
+    <div class="credit">
+      <button>Apply for credit</button>
 
+    </div>
 
   <h1 class="price">R2500,24</h1>
   <p class="old-price">Old price: <span class="new-price">R3300,00</span></p>
@@ -107,12 +93,17 @@
 
   <div class="finance-options">
     <p>Finance options available</p>
+    <div style="display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr); max-width: 300px;">
     <button id="cart-btn">ADD TO CART</button>
+    <a href="buynow.html" id="btn-buynow" style="text-align: center; display: flex; align-items: center; justify-content: center;">Buy it now</a>
+    <button id="btn-whistle" style="grid-column: span 2;">Add to Whistle</button>
+</div>
+
   </div>
 
   <div style="gap: 40px;" class="buy-item">
   
-    <button id="btn-whistle">Add to Whistle</button>
+
     <div class="social-media">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-pinterest"></i>
@@ -163,6 +154,5 @@
 </div>
 
 
-</script>
   </body>
 </html>

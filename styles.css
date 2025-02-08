@@ -278,7 +278,6 @@ input[type="checkbox"]:checked + .color-label {
 }
 
 button {
-  background-color: #3498db;
   color: #fff;
   border: none;
   padding: 12px 25px;
@@ -287,10 +286,6 @@ button {
   border-radius: 5px;
   margin-block-start: 10px;
   transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #2980b9;
 }
 
 button:disabled {
@@ -363,14 +358,16 @@ input[type="checkbox"]:checked + .color-label {
   text-decoration: line-through;
 }
 
-#cart-btn,
-#btn-buynow,
+#btn-buynow {
+  background-color: #27ae60;
+}
+
 #btn-whistle {
   inline-size: 100%;
   padding: 12px;
-  background-color: rgb(48, 46, 46);
-  border: none;
-  color: white;
+  border: 1px solid red;
+  background-color: white !important;
+  color: rgb(231, 45, 45);
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
@@ -378,10 +375,10 @@ input[type="checkbox"]:checked + .color-label {
   transition: background-color 0.3s ease;
   text-decoration: none;
 }
-#btn-buynow{
+#btn-buynow {
   inline-size: 100%;
   padding: 12px;
-  background-color: hsla(60, 2%, 8%, 0.864);
+
   border: none;
   color: rgb(248, 240, 240);
   font-size: 16px;
@@ -390,17 +387,9 @@ input[type="checkbox"]:checked + .color-label {
   margin-block-end: 1em;
   transition: background-color 0.3s ease;
   text-decoration: none;
-margin-top: 40px;
-margin-bottom: 40px;
-text-align: center;
-
-}
-
-#cart-btn:hover,
-#btn-buynow:hover,
-#btn-whistle:hover {
-  background-color: rgb(32, 81, 59);
-  color: white;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .social-media {
@@ -553,18 +542,14 @@ input:focus {
 button {
   inline-size: 100%;
   padding: 12px;
-  background-color: rgb(48, 46, 46);
-  border: none;
-  color: white;
+  background-color: rgb(253, 253, 253);
+  border: 1px solid red;
+  color: rgb(250, 14, 14);
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
   margin-block-end: 1em;
   transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: rgb(60, 61, 61);
 }
 
 .no-account {
