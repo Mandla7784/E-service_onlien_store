@@ -192,57 +192,6 @@ h2 {
   margin-block-end: 15px;
 }
 
-.color-section {
-  margin-block-end: 20px;
-}
-
-.color-section p {
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
-  margin-block-end: 10px;
-}
-
-.colors {
-  display: flex;
-  gap: 15px;
-}
-
-label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-input[type="checkbox"] {
-  display: none;
-}
-
-.color-label {
-  inline-size: 30px;
-  block-size: 30px;
-  border-radius: 50%;
-  margin-inline-end: 10px;
-  border: 2px solid #ccc;
-}
-
-.color-label.black {
-  background-color: black;
-}
-
-.color-label.white {
-  background-color: white;
-  border: 2px solid #333;
-}
-
-.color-label.pink {
-  background-color: pink;
-}
-
-input[type="checkbox"]:checked + .color-label {
-  border: 2px solid #000;
-}
-
 .price {
   font-size: 28px;
   font-weight: bold;
