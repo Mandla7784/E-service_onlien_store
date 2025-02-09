@@ -581,15 +581,15 @@ button {
   .links a {
     font-size: 16px;
   }
-
+  .image {
+    flex-direction: column;
+  }
   .hero-image {
     inline-size: 100%;
     block-size: auto;
   }
-
-  .details_right {
-    inline-size: 100%;
-    padding: 15px;
+  .more-items {
+    flex-direction: row;
   }
 
   .shop-content {
