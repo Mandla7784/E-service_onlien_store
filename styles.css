@@ -98,13 +98,15 @@ h1 {
 
   align-items: center;
   background-image: url("./public/Home.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: 10px;
+  color: white !important;
 }
 #home .content {
   text-align: center;
   margin-block-start: 4em;
-  color: rgb(39, 37, 37) !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 #home p {
