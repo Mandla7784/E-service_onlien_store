@@ -1,11 +1,10 @@
-const url_base_path = "https://fakestoreapi.com/products"
-const getProducts= (path)=> {
+const url_base_path = "https://fakestoreapi.com/products";
+const getProducts = (path) => {
+  fetch(path)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e))
+    .finally("products fetched");
+};
 
-fetch(url_base_path).then(res => res.json())
-.then(data => console.log(data))
-.catch(e => console.log(e))
-.finally("products fetched")
-
-}
-
-(getProducts(url_base_path))
+getProducts(url_base_path);
