@@ -1,3 +1,5 @@
+import ItemCard from "./productCard.js";
+
 const url_base_path = "https://fakestoreapi.com/products";
 const getProducts = (path) => {
   fetch(path)
@@ -8,3 +10,17 @@ const getProducts = (path) => {
 };
 
 getProducts(url_base_path);
+
+const new_ITEMCARD = new ItemCard(
+  "dfg",
+  "dfg",
+  "sdvgfd",
+  "dfg",
+  "dsfdgb",
+  "df",
+  "7"
+);
+
+const product_placement = document.querySelector(".products_aligning");
+product_placement.append(new_ITEMCARD);
+document.body.append(product_placement);
