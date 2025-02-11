@@ -22,10 +22,10 @@ function createCard(data) {
       id,
       image,
       price,
-      rating
+      rating,
+      title
     );
-    product_placement.append(new_ITEMCARD);
-
     const product_placement = document.querySelector(".products_aligning");
+    product_placement.append(new_ITEMCARD.createDOMBody());
   });
 }

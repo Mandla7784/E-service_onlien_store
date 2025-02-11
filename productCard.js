@@ -11,20 +11,19 @@ export default class ItemCard {
   /**
    *
    */
-  static createDOMBody = () => {
-    const card_body = document.createElement("div").classList.add("new_card");
+  createDOMBody = () => {
+    const card_body = document.createElement("div");
     const product_image = document.createElement("img");
     const product_title = document.createElement("h3");
     const product_price = document.createElement("p");
     const ratings_tag = document.createElement("p");
-    let item_description = (document.createElement("p").style.fontWeight =
-      "bold");
+    let item_description = document.createElement("p");
     //   adding content
     product_image.src = `${this.image}`;
     product_title.textContent = this.title;
     product_price.textContent = `ZAR${this.price}`;
     ratings_tag.textContent = this.rating;
-    item_description.textContent = `${this.description.substring(0, 25)}`;
+    item_description.textContent = this.description;
 
     // setting the content to the card
 
