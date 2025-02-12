@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       features_image.classList.add("features-img");
       features_image.src = `${image}`;
       features_image.alt = name; // Accessibility feature
-      description__tag.textContent = `${description.slice(0, 10)}...`; //
+      description__tag.textContent = `${description.slice(0, 20)}...`; //
       price_tag.textContent = `R${price.toFixed(2)}`; // Format price
       product_ratings.textContent = `Ratings: ${ratings}`;
       stock_left.textContent = `In Stock: ${stock}`;
