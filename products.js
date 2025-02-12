@@ -1,5 +1,5 @@
-import ItemCard from "./productCard.js";
-
+import { ItemCard, FeatureCard } from "./productCard.js";
+console.log(FeatureCard);
 const url_base_path = "https://fakestoreapi.com/products";
 const getProducts = (path) => {
   fetch(path)

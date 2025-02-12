@@ -1,4 +1,4 @@
-export default class ItemCard {
+export class ItemCard {
   constructor(category, description, id, image, price, rating, title) {
     this.category = category;
     this.description = description;
@@ -36,7 +36,7 @@ export default class ItemCard {
   };
 }
 
-class FeatureCard extends ItemCard {
+export class FeatureCard extends ItemCard {
   constructor() {
     super();
   }
