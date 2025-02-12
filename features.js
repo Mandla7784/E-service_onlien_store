@@ -1,3 +1,5 @@
+import { FeatureCard } from "./productCard.js";
+console.log(FeatureCard);
 document.addEventListener("DOMContentLoaded", () => {
   const base_path = "features.json";
 
