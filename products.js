@@ -12,7 +12,6 @@ const getProducts = (path) => {
 getProducts(url_base_path);
 
 function createCard(data) {
-  w;
   data.forEach((item) => {
     // console.log(item);
     const { catergory, id, title, image, price, rating, description } = item;

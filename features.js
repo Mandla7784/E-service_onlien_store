@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           this.textContent = "Succesfully Added to Cart !";
           this.style.backgroundColor = "hsl(120, 38%, 44%)";
+          this.style.color = "#ffff";
         }, 1000);
         setInterval(() => {
           this.textContent = "Add to Cart";
