@@ -35,3 +35,9 @@ export default class ItemCard {
     return card_body;
   };
 }
+
+class FeatureCard extends ItemCard {
+  constructor() {
+    super();
+  }
+}
