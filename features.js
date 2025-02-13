@@ -1,3 +1,5 @@
+import { FeatureCard } from "./productCard.js";
+console.log(FeatureCard);
 document.addEventListener("DOMContentLoaded", () => {
   const base_path = "features.json";
 
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       features_image.classList.add("features-img");
       features_image.src = `${image}`;
       features_image.alt = name; // Accessibility feature
-      description__tag.textContent = `${description.slice(0, 10)}...`; //
+      description__tag.textContent = `${description.slice(0, 20)}...`; //
       price_tag.textContent = `R${price.toFixed(2)}`; // Format price
       product_ratings.textContent = `Ratings: ${ratings}`;
       stock_left.textContent = `In Stock: ${stock}`;
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           this.textContent = "Succesfully Added to Cart !";
           this.style.backgroundColor = "hsl(120, 38%, 44%)";
+          this.style.color = "#ffff";
         }, 1000);
         setInterval(() => {
           this.textContent = "Add to Cart";
