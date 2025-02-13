@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     my_features.forEach((item) => {
       const { name, description, price, ratings, category, stock, image } =
         item;
-  // new line again 
+  // new line again
+  // testing again 
       // Create card container
       const card = document.createElement("div");
       card.classList.add("features-card");
