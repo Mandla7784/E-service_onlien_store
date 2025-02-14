@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(() => {
           this.textContent = "Add to Cart";
           this.style.backgroundColor = "";
+          this.style.color = "red";
         }, 2000);
       };
 
