@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     my_features.forEach((item) => {
       const { name, description, price, ratings, category, stock, image } =
         item;
-
+  // new line again
+  // testing again 
       // Create card container
       const card = document.createElement("div");
       card.classList.add("features-card");
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(() => {
           this.textContent = "Add to Cart";
           this.style.backgroundColor = "";
+          this.style.color = "red";
         }, 2000);
       };
 
