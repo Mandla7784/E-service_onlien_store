@@ -35,7 +35,7 @@ function viewCart(cartItems) {
   cartItems.forEach((item) => {
     const { pri, name, img, id } = item;
 
-    const price = Number(pri.slice(1));
+  const price = Number(pri.slice(1));
     totalPrice += price;
 
     shopcartitems.innerHTML += /*html*/ `
@@ -51,11 +51,14 @@ function viewCart(cartItems) {
         </button>
       </div>
     `;
-  });
 
+  });
+  
   totalTag.innerHTML = `Grand TOTAL: R${totalPrice.toFixed(2)}`;
   shopcartitems.append(totalTag);
+  return totalPrice
 }
 
 // events on cartToggler
 cartToggler.onclick = () => viewCart(jsonCartitems);
+export default viewCart()

@@ -1,3 +1,8 @@
+
+
+
+
+
 window.addEventListener("DOMContentLoaded", () => {
   // hero image
   const heroProduct = document.querySelector(".hero-image");
@@ -37,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
     homePage.classList.add("home-page-hide");
   });
 
-  // Function to chnage image
+  // Function to change image
   function chnageImage(e) {
     let image_source = e.target;
     heroProduct.src = `${image_source.src}`;
@@ -50,7 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// PAYPAL
+// Payement Gateway 
 paypal.Marks().render("#paypal-marks-container");
 
 paypal
@@ -60,7 +65,7 @@ paypal
         purchase_units: [
           {
             amount: {
-              value: "10.00",
+              value: "800",
             },
           },
         ],
