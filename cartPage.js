@@ -19,14 +19,14 @@ function deleteitem(itemkey, listOfItems) {
   let updatedItems = listOfItems.filter((item) => item.id != itemkey);
   localStorage.setItem("cartitems", JSON.stringify(updatedItems));
   console.log(updatedItems);
-  viewCart(updatedItems);
+  viewCart(updatedItems ,deleteitem());
 }
 
 /**
  * This function is triggered when a cart icon i clicked
  * it subscribes from localstorage and parese tha data to render in the DOM
  */
-function viewCart(cartItems) {
+function viewCart(cartItems , func) {
   const totalTag = document.createElement("h2"); //grand total tag
   shopCartDiv.classList.remove("none");
   shopcartitems.innerHTML = "";
@@ -44,7 +44,7 @@ function viewCart(cartItems) {
         <p>R${price.toFixed(2)}</p>
         <img style="inline-size: 100px; block-size: 100px;" src="${img}" />
         <button 
-          onclick="(function(){ deleteitem(${id}, jsonCartitems) })()"
+          onclick="(function(){ func(${id}, jsonCartitems) })()"
           class="deletebutton" 
           style="background-color: rgb(212, 42, 42); color: white;">
           delete
