@@ -8,6 +8,7 @@ closeCart.onclick = () => {
 
 const cartItems = localStorage.getItem("cartitems");
 const jsonCartitems = JSON.parse(cartItems); // parsing to JASON
+
 const shopcartitems = document.querySelector(".shop-cart-items");
 
 /**
