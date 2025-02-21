@@ -76,7 +76,6 @@ nav {
 .home-page .content {
   display: flex;
   flex-direction: column;
- 
 }
 
 .home-page-hide .content {
