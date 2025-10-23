@@ -130,8 +130,9 @@ class ShoppingCart {
   updateCartCount() {
     const cartCount = document.querySelector('.cart-count');
     if (cartCount) {
-      cartCount.textContent = this.cartItems.length;
-      cartCount.style.display = this.cartItems.length > 0 ? 'flex' : 'none';
+      const totalItems = this.cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+      cartCount.textContent = totalItems;
+      cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
     }
   }
 
