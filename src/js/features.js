@@ -119,8 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Adding features to Cart
 
-    let cartiItems = [];
-
   }
 
   //
