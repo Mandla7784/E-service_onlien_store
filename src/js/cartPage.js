@@ -186,7 +186,25 @@ class ShoppingCart {
   }
 
   removeItem(itemId) {
-    this.cartItems = this.cartItems.filter((item) => item.id !== itemId);
+    console.log("Before removal - cart items:", this.cartItems.length);
+    console.log("Removing item with ID:", itemId, "Type:", typeof itemId);
+    console.log(
+      "Item IDs in cart:",
+      this.cartItems.map((item) => item.id)
+    );
+
+    // Convert itemId to number for comparison
+    const numericItemId = parseInt(itemId);
+    console.log("Numeric item ID:", numericItemId);
+
+    this.cartItems = this.cartItems.filter((item) => item.id !== numericItemId);
+
+    console.log("After removal - cart items:", this.cartItems.length);
+    console.log(
+      "Remaining item IDs:",
+      this.cartItems.map((item) => item.id)
+    );
+
     this.saveCart();
     this.viewCart();
   }
@@ -293,32 +311,49 @@ class ShoppingCart {
   }
 
   addCartEventListeners() {
-    // Delete buttons
-    this.shopcartitems.querySelectorAll(".remove-item").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const itemId = e.target.getAttribute("data-id");
+    // Use event delegation for dynamic elements
+    this.shopcartitems.addEventListener("click", (e) => {
+      console.log("Cart item clicked:", e.target);
+
+      // Handle remove buttons
+      if (e.target.closest(".remove-item")) {
+        const removeBtn = e.target.closest(".remove-item");
+        const itemId = removeBtn.getAttribute("data-id");
+        console.log("Removing item:", itemId);
         this.removeItem(itemId);
-      });
-    });
+        return;
+      }
 
-    // Quantity controls
-    this.shopcartitems.querySelectorAll(".quantity-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const action = e.target.getAttribute("data-action");
-        const itemId = e.target.getAttribute("data-id");
+      // Handle quantity buttons
+      if (e.target.closest(".quantity-btn")) {
+        const btn = e.target.closest(".quantity-btn");
+        const action = btn.getAttribute("data-action");
+        const itemId = btn.getAttribute("data-id");
+        console.log("Quantity action:", action, "Item ID:", itemId);
         this.updateQuantity(itemId, action);
-      });
-    });
+        return;
+      }
 
-    // Checkout button
-    const checkoutBtn = this.shopcartitems.querySelector(".checkout");
-    if (checkoutBtn) {
-      checkoutBtn.addEventListener("click", () => this.handleCheckout());
-    }
+      // Handle checkout button
+      if (e.target.closest(".checkout")) {
+        console.log("Checkout clicked");
+        this.handleCheckout();
+        return;
+      }
+    });
   }
 
   updateQuantity(itemId, action) {
-    const item = this.cartItems.find((item) => item.id === itemId);
+    const numericItemId = parseInt(itemId);
+    const item = this.cartItems.find((item) => item.id === numericItemId);
+    console.log(
+      "Updating quantity for item:",
+      numericItemId,
+      "Action:",
+      action
+    );
+    console.log("Found item:", item);
+
     if (!item) return;
 
     if (action === "increase") {

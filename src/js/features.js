@@ -41,11 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     my_features.forEach((item) => {
       const { name, description, price, ratings, category, stock, image } =
         item;
-  // new line again
-  // testing again 
+      // new line again
+      // testing again
       // Create card container
       const card = document.createElement("div");
       card.classList.add("features-card");
+      card.setAttribute("data-price", price); // Store original price as data attribute
 
       let description__tag = document.createElement("h3");
       const features_image = document.createElement("img");
@@ -73,25 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the item data
         const item = this.closest(".features-card");
         const imageItem = item.querySelector("img");
-        const itemPrice = item.querySelector("p");
         const nameOfItem = item.querySelector("h3");
-        
-        if (imageItem && itemPrice && nameOfItem) {
+
+        // Get price from data attribute (more reliable)
+        const cardPrice = item.getAttribute("data-price");
+        console.log("Card data-price:", cardPrice);
+
+        if (imageItem && nameOfItem && cardPrice) {
+          const parsedPrice = parseFloat(cardPrice);
+          console.log("Parsed price from data attribute:", parsedPrice);
+
           // Create item object for the main cart system
           const cartItem = {
             id: Date.now(),
             name: nameOfItem.textContent,
-            price: parseFloat(itemPrice.textContent.replace(/[^0-9.-]+/g, "")),
+            price: parsedPrice,
             img: imageItem.src,
-            quantity: 1
+            quantity: 1,
           };
-          
+
+          console.log("Cart item being added:", cartItem);
+
           // Add to main cart system
           if (window.cart) {
             window.cart.addItem(cartItem);
           }
+        } else {
+          console.log("Missing elements:", {
+            imageItem,
+            nameOfItem,
+            cardPrice,
+          });
         }
-        
+
         // Visual feedback
         setTimeout(() => {
           this.textContent = "Successfully Added to Cart!";
@@ -118,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".features-rendered").appendChild(card);
     });
     // Adding features to Cart
-
   }
 
   //
