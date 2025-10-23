@@ -159,9 +159,22 @@
     <div class="page" id="news">
       <div class="news-content">
         <h1>Subscribe to our news letter</h1>
-        <form class="user-form">
-          <input class="user_subscription_email" type="email" placeholder="subscribe to our news" />
-          <input id="submit-subscriprion" type="submit" value="SUBSCRIBE" />
+        <form class="user-form" action="https://your-secure-endpoint.com/subscribe" method="post" autocomplete="on">
+          <input 
+            class="user_subscription_email" 
+            type="email" 
+            name="email" 
+            id="newsletter-email" 
+            placeholder="Enter your email" 
+            autocomplete="email"
+            inputmode="email"
+            required 
+            aria-label="Email address for newsletter subscription"
+          />
+          <button id="submit-subscription" type="submit">
+            <span class="button-text">SUBSCRIBE</span>
+            <span class="button-loader" aria-hidden="true" hidden></span>
+          </button>
         </form>
       </div>
     </div>
@@ -189,9 +202,21 @@
         <div class="newsletter">
             <h2 style="color: white;">E-server Newsletter</h2>
             <p>Subscribe for E-serve news & special offers!</p>
-            <form>
-                <input type="email" placeholder="Enter your email" required>
-                <button style="width: 300px !important;" type="submit">Subscribe</button>
+            <form action="https://your-secure-endpoint.com/subscribe" method="post" autocomplete="on" class="footer-newsletter">
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="footer-newsletter-email" 
+                    placeholder="Enter your email" 
+                    autocomplete="email"
+                    inputmode="email"
+                    required
+                    aria-label="Email address for newsletter subscription"
+                >
+                <button type="submit" style="width: 300px !important;">
+                    <span class="button-text">Subscribe</span>
+                    <span class="button-loader" aria-hidden="true" hidden></span>
+                </button>
             </form>
         </div>
 
