@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/cart.css" />
-    <script type="module" defer src="js/cartPage.js"></script>
+    <script defer src="js/cartPage.js"></script>
     <script src="js/Routing.js"></script>
     <script src="js/about.js" ></script>
     <script type="module" src="js/features.js "></script>
     <script  type="module"  src="js/products.js"></script>
-    <script type="module" src="js/app.js"></script>
+    <script src="js/app.js"></script>
 <script>
   // Load PayPal SDK directly only if not already loaded
   if (!document.querySelector('script[src*="paypal.com/sdk/js"]')) {
@@ -52,17 +52,6 @@
         <i class="fa-solid fa-bag-shopping"></i>
       </a>
       
-      <!-- Debug button to force cart visibility -->
-      <button onclick="
-        const cart = document.querySelector('.shopping-cart');
-        console.log('Cart element found:', cart);
-        if (cart) {
-          cart.classList.add('debug');
-          console.log('Cart should now be visible');
-        } else {
-          console.error('Cart element not found!');
-        }
-      " style="background: blue; color: white; padding: 5px; margin-left: 5px; font-size: 12px;">Debug Cart</button>
       
      
     </nav>

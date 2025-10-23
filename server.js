@@ -18,6 +18,11 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
+        frameSrc: [
+          "'self'",
+          "https://www.sandbox.paypal.com",
+          "https://www.paypal.com",
+        ],
         scriptSrc: [
           "'self'",
           "'unsafe-inline'",
@@ -46,6 +51,8 @@ app.use(
           "'self'",
           "https://fakestoreapi.com",
           "https://api.fakestoreapi.com",
+          "https://www.sandbox.paypal.com",
+          "https://www.paypal.com",
         ],
         fontSrc: ["'self'", "https://cdnjs.cloudflare.com"],
         objectSrc: ["'none'"],

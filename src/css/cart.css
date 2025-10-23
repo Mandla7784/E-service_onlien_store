@@ -23,13 +23,6 @@
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* Debug: Make cart always visible for testing */
-.shopping-cart.debug {
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-  visibility: visible !important;
-  display: flex !important;
-}
 
 .shopping-cart.visible {
   opacity: 1;

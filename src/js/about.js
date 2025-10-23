@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderProductDetails(data) {
     const details = data; // product details list
     const productDetails = document.querySelector(".about-product");
+
+    if (!productDetails) {
+      console.warn("Product details container not found");
+      return;
+    }
+
     const brandDetails = Object.entries(details[0]);
 
     brandDetails.forEach((detail) => {
