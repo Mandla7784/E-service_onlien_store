@@ -7,8 +7,24 @@ class ShoppingCart {
     this.shopcartitems = document.querySelector(".shop-cart-items");
     this.cartItems = this.loadCart();
     
+    // Initialize cart UI
+    this.initializeCartUI();
     this.initializeEventListeners();
     this.updateCartCount();
+  }
+  
+  initializeCartUI() {
+    // Add cart count badge if it doesn't exist
+    if (!document.querySelector('.cart-count')) {
+      const cartCount = document.createElement('span');
+      cartCount.className = 'cart-count';
+      this.cartToggler?.appendChild(cartCount);
+    }
+    
+    // Ensure cart is initially hidden
+    if (this.shopCartDiv) {
+      this.shopCartDiv.classList.remove('visible');
+    }
   }
 
   loadCart() {
@@ -30,24 +46,59 @@ class ShoppingCart {
   }
 
   initializeEventListeners() {
-    // Toggle cart visibility
-    this.cartToggler?.addEventListener('click', () => this.toggleCart());
+    // Toggle cart visibility with proper event delegation
+    this.cartToggler?.addEventListener('click', (e) => this.toggleCart(e));
     this.closeCart?.addEventListener('click', () => this.hideCart());
     
-    // Close cart when clicking outside
+    // Close cart when clicking outside or pressing Escape
     document.addEventListener('click', (e) => {
-      if (!this.shopCartDiv?.contains(e.target) && e.target !== this.cartToggler) {
+      if (this.shopCartDiv?.classList.contains('visible') && 
+          !this.shopCartDiv.contains(e.target) && 
+          e.target !== this.cartToggler && 
+          !this.cartToggler.contains(e.target)) {
         this.hideCart();
+      }
+    });
+
+    // Handle keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.shopCartDiv?.classList.contains('visible')) {
+        this.hideCart();
+      }
+    });
+
+    // Delegate quantity and remove button events
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('.quantity-btn, .remove-item');
+      if (!target) return;
+      
+      e.preventDefault();
+      
+      const itemId = target.dataset.id;
+      const action = target.dataset.action || target.classList.contains('remove-item') ? 'remove' : null;
+      
+      if (action === 'increase') {
+        this.updateQuantity(itemId, 1);
+      } else if (action === 'decrease') {
+        this.updateQuantity(itemId, -1);
+      } else if (action === 'remove' || target.closest('.remove-item')) {
+        this.removeItem(itemId);
       }
     });
   }
 
-  toggleCart() {
-    this.shopCartDiv?.classList.toggle('hidden');
+  toggleCart(e) {
+    if (e) e.preventDefault();
+    this.shopCartDiv?.classList.toggle('visible');
+    document.body.style.overflow = this.shopCartDiv?.classList.contains('visible') ? 'hidden' : '';
   }
 
   hideCart() {
-    this.shopCartDiv?.classList.add('hidden');
+    this.shopCartDiv?.classList.remove('visible');
+    document.body.style.overflow = '';
+    // Reset any active states
+    const activeButtons = document.querySelectorAll('.quantity-btn:active');
+    activeButtons.forEach(btn => btn.blur());
   }
 
   addItem(item) {
@@ -73,11 +124,20 @@ class ShoppingCart {
   viewCart() {
     if (!this.shopCartDiv || !this.shopcartitems) return;
     
-    this.shopCartDiv.classList.remove("hidden");
+    // Show cart with smooth transition
+    if (!this.shopCartDiv.classList.contains('visible')) {
+      this.shopCartDiv.classList.add('visible');
+    }
+    
     this.shopcartitems.innerHTML = "";
     
     if (!this.cartItems.length) {
-      this.shopcartitems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+      this.shopcartitems.innerHTML = `
+        <div class="empty-cart-state">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Your cart is empty</p>
+          <button class="btn-continue-shopping" onclick="cart.hideCart()">Continue Shopping</button>
+        </div>`;
       this.updateCartCount();
       return;
     }
@@ -86,28 +146,33 @@ class ShoppingCart {
     
     this.cartItems.forEach((item) => {
       const { pri, name, img, id } = item;
-      const price = this.parsePrice(pri);
       totalPrice += price * (item.quantity || 1);
 
       const itemElement = document.createElement('div');
       itemElement.className = 'cart-item';
       itemElement.innerHTML = `
-        <img class="cart-item-image" src="${img || ''}" alt="${name || 'Product'}" />
+        <img class="cart-item-image" src="${img || ''}" alt="${name || 'Product'}" 
+             onerror="this.src='https://via.placeholder.com/80?text=No+Image'" />
         <div class="cart-item-details">
-          <h4>${name || 'Unnamed Product'}</h4>
-          <div class="quantity-controls">
-            <button class="quantity-btn" data-action="decrease" data-id="${id}">-</button>
-            <span class="quantity">${item.quantity || 1}</span>
-            <button class="quantity-btn" data-action="increase" data-id="${id}">+</button>
+          <div class="cart-item-header">
+            <h4>${name || 'Unnamed Product'}</h4>
+            <button class="remove-item" aria-label="Remove item" data-id="${id}">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
-          <p>R${(price * (item.quantity || 1)).toFixed(2)}</p>
-          <button class="deletebutton" data-id="${id}">Remove</button>
+          <div class="cart-item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn" data-action="decrease" data-id="${id}" aria-label="Decrease quantity">-</button>
+              <span class="quantity">${item.quantity || 1}</span>
+              <button class="quantity-btn" data-action="increase" data-id="${id}" aria-label="Increase quantity">+</button>
+            </div>
+            <p class="cart-item-price">$${(price * (item.quantity || 1)).toFixed(2)}</p>
+          </div>
         </div>
       `;
       this.shopcartitems.appendChild(itemElement);
-    });
+    };
 
-    // Add total and checkout button
     const totalElement = document.createElement('div');
     totalElement.className = 'cart-total';
     totalElement.innerHTML = `
