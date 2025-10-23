@@ -82,27 +82,66 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Function to change image
   function changeImage(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
     let image_source = e.target;
-    heroProduct.src = `${image_source.src}`;
+    console.log("Image clicked:", image_source);
+    console.log("Hero product element:", heroProduct);
 
-    // Remove active class from all images
-    headsets.forEach((img) => img.classList.remove("active"));
+    if (heroProduct && image_source) {
+      heroProduct.src = image_source.src;
+      console.log("Image source updated to:", image_source.src);
 
-    // Add active class to clicked image
-    image_source.classList.add("active");
+      // Remove active class from all images
+      headsets.forEach((img) => img.classList.remove("active"));
 
-    console.log(image_source.src);
+      // Add active class to clicked image
+      image_source.classList.add("active");
+      console.log("Active class added to:", image_source);
+    } else {
+      console.error("Hero product or image source not found");
+    }
   }
 
   // grabbing headsets from the DOM
   const headsets = document.querySelectorAll(".heads");
-  headsets.forEach((headset) => {
-    headset.addEventListener("click", changeImage);
-  });
+  console.log("Found headsets:", headsets.length);
 
-  // Set first image as active by default
   if (headsets.length > 0) {
+    headsets.forEach((headset, index) => {
+      console.log(`Adding click listener to headset ${index}:`, headset);
+      headset.addEventListener("click", changeImage);
+
+      // Also add touch events for mobile
+      headset.addEventListener("touchstart", changeImage);
+    });
+
+    // Set first image as active by default
     headsets[0].classList.add("active");
+    console.log("First image set as active");
+  } else {
+    console.error("No headsets found in DOM");
+
+    // Try again after a short delay in case DOM isn't fully loaded
+    setTimeout(() => {
+      const retryHeadsets = document.querySelectorAll(".heads");
+      console.log("Retry - Found headsets:", retryHeadsets.length);
+
+      if (retryHeadsets.length > 0) {
+        retryHeadsets.forEach((headset, index) => {
+          console.log(
+            `Adding click listener to headset ${index} (retry):`,
+            headset
+          );
+          headset.addEventListener("click", changeImage);
+          headset.addEventListener("touchstart", changeImage);
+        });
+
+        retryHeadsets[0].classList.add("active");
+        console.log("First image set as active (retry)");
+      }
+    }, 100);
   }
 
   // Add to cart functionality
