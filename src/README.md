@@ -56,6 +56,9 @@ window.addEventListener("DOMContentLoaded", () => {
  */
   })
 
+To preview this project 
+run python -m http.server 8000 if you have python 
+or use live server extension in vs code 
 
 
 ```

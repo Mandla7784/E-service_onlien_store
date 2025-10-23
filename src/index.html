@@ -21,7 +21,18 @@
     <script type="module" src="features.js "></script>
     <script  type="module"  src="products.js"></script>
     <script type="module" src="app.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb&components=buttons,marks"></script>
+<script>
+  // Fetch PayPal client ID from server
+  fetch('/api/config/paypal')
+    .then(response => response.json())
+    .then(config => {
+      const script = document.createElement('script');
+      script.src = `https://www.paypal.com/sdk/js?client-id=${config.clientId}&components=buttons,marks`;
+      script.async = true;
+      document.head.appendChild(script);
+    })
+    .catch(error => console.error('Error loading PayPal:', error));
+</script>
     <title>Document</title>
     <!-- Testing -->
           
