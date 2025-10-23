@@ -102,9 +102,23 @@ class ShoppingCart {
   }
 
   addItem(item) {
-    this.cartItems.push(item);
+    // Check if item already exists in cart
+    const existingItem = this.cartItems.find(cartItem => cartItem.id === item.id);
+    
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+      // If item doesn't exist, add it with quantity 1
+      this.cartItems.push({...item, quantity: 1});
+    }
+    
     this.saveCart();
     this.viewCart();
+    this.updateCartCount();
+    
+    // Show success feedback
+    console.log('Item added to cart:', item);
   }
 
   removeItem(itemId) {

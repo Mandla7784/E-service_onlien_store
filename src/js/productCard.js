@@ -16,22 +16,76 @@ export class ItemCard {
     const product_image = document.createElement("img");
     const product_title = document.createElement("h3");
     const product_price = document.createElement("p");
-    const ratings_tag = document.createElement("p");
-    let item_description = document.createElement("p");
-    //   adding content
+    const ratings_tag = document.createElement("div");
+    const add_to_cart_btn = document.createElement("button");
+
+    // Set up the card structure
+    card_body.className = "product-card";
+
+    // Image setup
     product_image.src = `${this.image}`;
+    product_image.alt = this.title;
+    product_image.className = "product-image";
+
+    // Title setup
     product_title.textContent = this.title;
-    product_price.textContent = `ZAR${this.price}`;
-    ratings_tag.textContent = this.rating;
-    item_description.textContent = this.description;
+    product_title.className = "product-title";
 
-    // setting the content to the card
+    // Price setup
+    product_price.textContent = `R${this.price}`;
+    product_price.className = "product-price";
 
-    card_body.append(product_title);
-    card_body.append(product_image);
-    card_body.append(product_price);
-    card_body.append(item_description);
-    card_body.append(ratings_tag);
+    // Rating setup
+    ratings_tag.className = "product-rating";
+    ratings_tag.innerHTML = `⭐ ${this.rating?.rate || this.rating || "4.0"}`;
+
+    // Add to cart button setup
+    add_to_cart_btn.textContent = "Add to Cart";
+    add_to_cart_btn.className = "add-to-cart-btn";
+    add_to_cart_btn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Add to cart functionality
+      if (window.cart) {
+        const item = {
+          id: this.id,
+          name: this.title,
+          price: this.price,
+          img: this.image,
+        };
+        
+        // Add item to cart
+        window.cart.addItem(item);
+        
+        // Visual feedback
+        add_to_cart_btn.textContent = "Added!";
+        add_to_cart_btn.style.backgroundColor = "#27ae60";
+        add_to_cart_btn.style.transform = "scale(0.95)";
+        
+        setTimeout(() => {
+          add_to_cart_btn.textContent = "Add to Cart";
+          add_to_cart_btn.style.backgroundColor = "";
+          add_to_cart_btn.style.transform = "";
+        }, 2000);
+      } else {
+        console.error('Cart not initialized');
+        add_to_cart_btn.textContent = "Error!";
+        add_to_cart_btn.style.backgroundColor = "#e74c3c";
+        setTimeout(() => {
+          add_to_cart_btn.textContent = "Add to Cart";
+          add_to_cart_btn.style.backgroundColor = "";
+        }, 2000);
+      }
+    };
+
+    // Append elements to card
+    card_body.appendChild(product_image);
+    card_body.appendChild(product_title);
+    card_body.appendChild(product_price);
+    card_body.appendChild(ratings_tag);
+    card_body.appendChild(add_to_cart_btn);
+
     return card_body;
   };
 }
