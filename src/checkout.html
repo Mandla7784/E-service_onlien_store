@@ -22,7 +22,16 @@
     <script type="module" src="js/features.js "></script>
     <script type="module" src="js/products.js"></script>
     <script type="module" src="js/app.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb&components=buttons,marks"></script>
+    <script>
+      // Load PayPal SDK only if not already loaded
+      if (!document.querySelector('script[src*="paypal.com/sdk/js"]')) {
+        const script = document.createElement("script");
+        script.src =
+          "https://www.paypal.com/sdk/js?client-id=AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb&components=buttons,marks&currency=ZAR";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    </script>
     <title>Document</title>
   </head>
   <body>

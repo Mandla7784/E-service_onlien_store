@@ -139,19 +139,38 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Add "View Cart" functionality
+  const cartIconLink = document.querySelector("#cart-icon-link");
+  if (cartIconLink) {
+    cartIconLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.cart) {
+        window.cart.toggleCart();
+      }
+    });
+  }
 });
 
 // Payment Gateway - Initialize PayPal when SDK is loaded
+let paypalInitialized = false;
+
 function initializePayPal() {
-  if (typeof paypal !== "undefined") {
+  if (typeof paypal !== "undefined" && !paypalInitialized) {
     try {
-      // Render PayPal marks
-      if (document.querySelector("#paypal-marks-container")) {
+      paypalInitialized = true;
+
+      // Render PayPal marks only once
+      const marksContainer = document.querySelector("#paypal-marks-container");
+      if (marksContainer && !marksContainer.hasChildNodes()) {
         paypal.Marks().render("#paypal-marks-container");
       }
 
-      // Render PayPal buttons
-      if (document.querySelector("#paypal-buttons-container")) {
+      // Render PayPal buttons only once
+      const buttonsContainer = document.querySelector(
+        "#paypal-buttons-container"
+      );
+      if (buttonsContainer && !buttonsContainer.hasChildNodes()) {
         paypal
           .Buttons({
             style: {
@@ -181,7 +200,9 @@ function initializePayPal() {
             },
             onError: function (err) {
               console.error("PayPal error:", err);
-              alert("Payment failed. Please try again.");
+              alert(
+                "PayPal payment failed. Please use the 'Pay with Credit Card' option instead."
+              );
             },
             onCancel: function (data) {
               console.log("Payment cancelled:", data);
@@ -191,8 +212,9 @@ function initializePayPal() {
       }
     } catch (error) {
       console.error("PayPal initialization error:", error);
+      paypalInitialized = false;
     }
-  } else {
+  } else if (!paypalInitialized) {
     // Retry after a short delay if PayPal SDK not loaded yet
     setTimeout(initializePayPal, 100);
   }
@@ -201,15 +223,17 @@ function initializePayPal() {
 // Initialize PayPal when DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
   // Wait a bit for PayPal SDK to load
-  setTimeout(initializePayPal, 500);
+  setTimeout(initializePayPal, 1000);
 });
 
 // Handle payment option changes
 document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
   el.addEventListener("change", function (event) {
-    const alternateContainer = document.querySelector("#alternate-button-container");
+    const alternateContainer = document.querySelector(
+      "#alternate-button-container"
+    );
     const paypalContainer = document.querySelector("#paypal-buttons-container");
-    
+
     if (event.target.value === "paypal") {
       if (alternateContainer) alternateContainer.style.display = "none";
       if (paypalContainer) paypalContainer.style.display = "block";
@@ -220,11 +244,42 @@ document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
   });
 });
 
+// Handle credit card payment
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("credit-card-btn")) {
+    event.preventDefault();
+
+    // Simulate credit card payment processing
+    const confirmPayment = confirm(
+      "This is a demo. In a real application, this would redirect to a secure payment processor.\n\nProceed with demo payment?"
+    );
+
+    if (confirmPayment) {
+      // Simulate payment processing
+      event.target.textContent = "Processing...";
+      event.target.disabled = true;
+
+      setTimeout(() => {
+        alert(
+          "Payment successful! This is a demo payment.\n\nIn a real application, you would integrate with a payment processor like Stripe, Square, or your bank's payment gateway."
+        );
+        event.target.textContent = "Pay with Credit Card";
+        event.target.disabled = false;
+
+        // Redirect to success page or show success message
+        window.location.href = "index.html";
+      }, 2000);
+    }
+  }
+});
+
 // Initialize payment options
-document.addEventListener("DOMContentLoaded", function() {
-  const alternateContainer = document.querySelector("#alternate-button-container");
+document.addEventListener("DOMContentLoaded", function () {
+  const alternateContainer = document.querySelector(
+    "#alternate-button-container"
+  );
   const paypalContainer = document.querySelector("#paypal-buttons-container");
-  
+
   if (alternateContainer) alternateContainer.style.display = "none";
   if (paypalContainer) paypalContainer.style.display = "block";
 });
