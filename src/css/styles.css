@@ -743,6 +743,12 @@ h1 {
   object-fit: cover;
   position: relative;
   z-index: 2;
+  /* Ensure clickability */
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .more-items img:hover {

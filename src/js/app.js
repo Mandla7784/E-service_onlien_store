@@ -88,19 +88,37 @@ window.addEventListener("DOMContentLoaded", () => {
     let image_source = e.target;
     console.log("Image clicked:", image_source);
     console.log("Hero product element:", heroProduct);
+    console.log(
+      "Current hero image src:",
+      heroProduct ? heroProduct.src : "Not found"
+    );
 
     if (heroProduct && image_source) {
+      // Update the main image source
       heroProduct.src = image_source.src;
+      heroProduct.alt = image_source.alt;
       console.log("Image source updated to:", image_source.src);
 
       // Remove active class from all images
-      headsets.forEach((img) => img.classList.remove("active"));
+      const allHeadsets = document.querySelectorAll(".heads");
+      allHeadsets.forEach((img) => {
+        img.classList.remove("active");
+        console.log("Removed active from:", img);
+      });
 
       // Add active class to clicked image
       image_source.classList.add("active");
       console.log("Active class added to:", image_source);
+
+      // Force a re-render
+      heroProduct.style.opacity = "0.8";
+      setTimeout(() => {
+        heroProduct.style.opacity = "1";
+      }, 50);
     } else {
       console.error("Hero product or image source not found");
+      console.error("Hero product:", heroProduct);
+      console.error("Image source:", image_source);
     }
   }
 
@@ -143,6 +161,14 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }, 100);
   }
+
+  // Add event delegation as fallback
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("heads")) {
+      console.log("Event delegation triggered for:", e.target);
+      changeImage(e);
+    }
+  });
 
   // Add to cart functionality
   if (cartBtn) {
