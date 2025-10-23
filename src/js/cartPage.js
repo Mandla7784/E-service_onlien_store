@@ -145,8 +145,8 @@ class ShoppingCart {
     let totalPrice = 0;
     
     this.cartItems.forEach((item) => {
-      const { pri, name, img, id } = item;
-      totalPrice += price * (item.quantity || 1);
+      const { price, name, img, id } = item;
+      totalPrice += this.parsePrice(price) * (item.quantity || 1);
 
       const itemElement = document.createElement('div');
       itemElement.className = 'cart-item';
@@ -166,7 +166,7 @@ class ShoppingCart {
               <span class="quantity">${item.quantity || 1}</span>
               <button class="quantity-btn" data-action="increase" data-id="${id}" aria-label="Increase quantity">+</button>
             </div>
-            <p class="cart-item-price">$${(price * (item.quantity || 1)).toFixed(2)}</p>
+            <p class="cart-item-price">R${(this.parsePrice(price) * (item.quantity || 1)).toFixed(2)}</p>
           </div>
         </div>
       `;
