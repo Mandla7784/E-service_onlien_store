@@ -70,13 +70,35 @@ document.addEventListener("DOMContentLoaded", () => {
       // adding to cart
 
       cartButton.onclick = function () {
-        addingToCart(this);
+        // Get the item data
+        const item = this.closest(".features-card");
+        const imageItem = item.querySelector("img");
+        const itemPrice = item.querySelector("p");
+        const nameOfItem = item.querySelector("h3");
+        
+        if (imageItem && itemPrice && nameOfItem) {
+          // Create item object for the main cart system
+          const cartItem = {
+            id: Date.now(),
+            name: nameOfItem.textContent,
+            price: parseFloat(itemPrice.textContent.replace(/[^0-9.-]+/g, "")),
+            img: imageItem.src,
+            quantity: 1
+          };
+          
+          // Add to main cart system
+          if (window.cart) {
+            window.cart.addItem(cartItem);
+          }
+        }
+        
+        // Visual feedback
         setTimeout(() => {
-          this.textContent = "Succesfully Added to Cart !";
+          this.textContent = "Successfully Added to Cart!";
           this.style.backgroundColor = "hsl(120, 38%, 44%)";
           this.style.color = "#ffff";
-        }, 1000);
-        setInterval(() => {
+        }, 100);
+        setTimeout(() => {
           this.textContent = "Add to Cart";
           this.style.backgroundColor = "";
           this.style.color = "red";
@@ -99,40 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let cartiItems = [];
 
-    /**
-     * @param {*} button
-     * this function takes a  a closest button to the targeted element and use it to add the data to
-     * localstorage
-     * @constant {object} my_item
-     * it creates an item with properties required to be used in order to manipulate that item
-     */
-    function addingToCart(button) {
-      if (button && button.closest) {
-        const item = button.closest(".features-card");
-
-        // item image
-        const imageItem = item.querySelector("img");
-        const itemPrice = item.querySelector("p");
-        const nameOfItem = item.querySelector("h3");
-
-        if (imageItem && itemPrice) {
-          const imageSRC = imageItem.src;
-          const price = itemPrice.textContent;
-          const my_item = {
-            id: Date.now(),
-            pri: price,
-            img: imageSRC,
-            name: nameOfItem.textContent,
-          };
-          //  adding to the cart list
-          cartiItems.push(my_item);
-
-          // Setting to localstorage database
-          localStorage.setItem("cartitems", JSON.stringify(cartiItems));
-          console.log(cartiItems);
-        }
-      }
-    }
   }
 
   //
