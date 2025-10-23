@@ -7,6 +7,13 @@ class ShoppingCart {
     this.shopcartitems = document.querySelector(".shop-cart-items");
     this.cartItems = this.loadCart();
     
+    console.log('Cart elements found:', {
+      cartToggler: !!this.cartToggler,
+      closeCart: !!this.closeCart,
+      shopCartDiv: !!this.shopCartDiv,
+      shopcartitems: !!this.shopcartitems
+    });
+    
     // Initialize cart UI
     this.initializeCartUI();
     this.initializeEventListeners();
@@ -89,12 +96,34 @@ class ShoppingCart {
 
   toggleCart(e) {
     if (e) e.preventDefault();
-    this.shopCartDiv?.classList.toggle('visible');
+    console.log('Toggling cart, current state:', this.shopCartDiv?.classList.contains('visible'));
+    
+    // Force show cart with all necessary styles
+    if (!this.shopCartDiv?.classList.contains('visible')) {
+      this.shopCartDiv?.classList.add('visible');
+      this.shopCartDiv.style.display = 'flex';
+      this.shopCartDiv.style.opacity = '1';
+      this.shopCartDiv.style.visibility = 'visible';
+      this.shopCartDiv.style.transform = 'translateX(0)';
+    } else {
+      this.shopCartDiv?.classList.remove('visible');
+      this.shopCartDiv.style.display = '';
+      this.shopCartDiv.style.opacity = '';
+      this.shopCartDiv.style.visibility = '';
+      this.shopCartDiv.style.transform = '';
+    }
+    
+    console.log('Cart toggled, new state:', this.shopCartDiv?.classList.contains('visible'));
     document.body.style.overflow = this.shopCartDiv?.classList.contains('visible') ? 'hidden' : '';
   }
 
   hideCart() {
     this.shopCartDiv?.classList.remove('visible');
+    this.shopCartDiv?.classList.remove('debug');
+    this.shopCartDiv.style.display = '';
+    this.shopCartDiv.style.opacity = '';
+    this.shopCartDiv.style.visibility = '';
+    this.shopCartDiv.style.transform = '';
     document.body.style.overflow = '';
     // Reset any active states
     const activeButtons = document.querySelectorAll('.quantity-btn:active');
@@ -262,7 +291,21 @@ class ShoppingCart {
 
 // Initialize the shopping cart when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('Initializing shopping cart...');
+  
+  // Debug: Check if cart elements exist
+  const cartElement = document.querySelector('.shopping-cart');
+  const cartIcon = document.querySelector('.cart-icon');
+  console.log('Cart element found:', cartElement);
+  console.log('Cart icon found:', cartIcon);
+  
+  if (!cartElement) {
+    console.error('CRITICAL: Cart element not found in DOM!');
+    return;
+  }
+  
   window.cart = new ShoppingCart();
+  console.log('Cart initialized:', window.cart);
   
   // Initialize cart view if we're on the cart page
   const isCartPage = document.querySelector('body').classList.contains('cart-page');
