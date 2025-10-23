@@ -126,6 +126,8 @@ class ShoppingCart {
       this.shopCartDiv.style.opacity = "1";
       this.shopCartDiv.style.visibility = "visible";
       this.shopCartDiv.style.transform = "translateX(0)";
+      // Refresh cart content when opening
+      this.viewCart();
     } else {
       this.shopCartDiv?.classList.remove("visible");
       this.shopCartDiv.style.display = "";
@@ -159,6 +161,9 @@ class ShoppingCart {
   }
 
   addItem(item) {
+    console.log("Adding item to cart:", item);
+    console.log("Item price:", item.price, "Type:", typeof item.price);
+
     // Check if item already exists in cart
     const existingItem = this.cartItems.find(
       (cartItem) => cartItem.id === item.id
@@ -201,6 +206,8 @@ class ShoppingCart {
   viewCart() {
     if (!this.shopCartDiv || !this.shopcartitems) return;
 
+    console.log("Viewing cart with items:", this.cartItems);
+
     // Show cart with smooth transition
     if (!this.shopCartDiv.classList.contains("visible")) {
       this.shopCartDiv.classList.add("visible");
@@ -223,7 +230,13 @@ class ShoppingCart {
 
     this.cartItems.forEach((item) => {
       const { price, name, img, id } = item;
-      totalPrice += this.parsePrice(price) * (item.quantity || 1);
+      const itemTotal = this.parsePrice(price) * (item.quantity || 1);
+      totalPrice += itemTotal;
+      console.log(
+        `Item: ${name}, Price: ${price}, Parsed: ${this.parsePrice(
+          price
+        )}, Quantity: ${item.quantity || 1}, Total: ${itemTotal}`
+      );
 
       const itemElement = document.createElement("div");
       itemElement.className = "cart-item";
@@ -271,14 +284,17 @@ class ShoppingCart {
   }
 
   parsePrice(priceStr) {
+    console.log("Parsing price:", priceStr, "Type:", typeof priceStr);
     if (typeof priceStr === "number") return priceStr;
     if (!priceStr) return 0;
-    return parseFloat(priceStr.replace(/[^0-9.-]+/g, "")) || 0;
+    const parsed = parseFloat(priceStr.replace(/[^0-9.-]+/g, "")) || 0;
+    console.log("Parsed price:", parsed);
+    return parsed;
   }
 
   addCartEventListeners() {
     // Delete buttons
-    this.shopcartitems.querySelectorAll(".deletebutton").forEach((btn) => {
+    this.shopcartitems.querySelectorAll(".remove-item").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const itemId = e.target.getAttribute("data-id");
         this.removeItem(itemId);
