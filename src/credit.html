@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apply for Credit</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="credit.css" />
+    <title>Apply for Credit - E-serve</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/credit.css" />
   </head>
   <body>
     <nav>
@@ -25,47 +32,106 @@
 
     <main>
       <section class="credit-form">
-        <h2>Apply for Credit</h2>
+        <h2><i class="fas fa-credit-card"></i> Apply for Credit</h2>
+        <p>
+          Get instant approval for your purchase with our flexible credit
+          options
+        </p>
         <form id="creditApplicationForm" class="secure-form">
           <!-- CSRF Token will be inserted here by JavaScript -->
-          <div id="form-messages" class="form-messages" style="display: none;"></div>
-          
+          <div
+            id="form-messages"
+            class="form-messages"
+            style="display: none"
+          ></div>
+
           <div class="form-group">
-            <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" name="fullName" autocomplete="name" required 
-                   pattern="[A-Za-z\s-]+" title="Please enter a valid name" />
+            <label for="full-name"><i class="fas fa-user"></i> Full Name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="fullName"
+              autocomplete="name"
+              required
+              pattern="[A-Za-z\s-]+"
+              title="Please enter a valid name"
+              placeholder="Enter your full name"
+            />
           </div>
 
           <div class="form-group">
-            <label for="id-number">ID/Passport Number</label>
-            <input type="text" id="id-number" name="idNumber" autocomplete="off" 
-                   pattern="[0-9A-Za-z]+" title="Please enter a valid ID or passport number" required 
-                   inputmode="numeric" />
+            <label for="id-number"
+              ><i class="fas fa-id-card"></i> ID/Passport Number</label
+            >
+            <input
+              type="text"
+              id="id-number"
+              name="idNumber"
+              autocomplete="off"
+              pattern="[0-9A-Za-z]+"
+              title="Please enter a valid ID or passport number"
+              required
+              inputmode="numeric"
+              placeholder="Enter your ID or passport number"
+            />
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" 
-                   inputmode="email" required />
+            <label for="email"
+              ><i class="fas fa-envelope"></i> Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              inputmode="email"
+              required
+              placeholder="Enter your email address"
+            />
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" 
-                   pattern="[0-9+\-\s()]+" title="Please enter a valid phone number" 
-                   inputmode="tel" required />
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              autocomplete="tel"
+              pattern="[0-9+\-\s()]+"
+              title="Please enter a valid phone number"
+              inputmode="tel"
+              required
+              placeholder="Enter your phone number"
+            />
           </div>
 
           <div class="form-group">
-            <label for="income">Monthly Income (ZAR)</label>
-            <input type="number" id="income" name="income" autocomplete="transaction-amount" 
-                   min="0" step="0.01" inputmode="decimal" required />
+            <label for="income"
+              ><i class="fas fa-money-bill-wave"></i> Monthly Income
+              (ZAR)</label
+            >
+            <input
+              type="number"
+              id="income"
+              name="income"
+              autocomplete="transaction-amount"
+              min="0"
+              step="0.01"
+              inputmode="decimal"
+              required
+              placeholder="Enter your monthly income"
+            />
           </div>
 
           <div class="form-group">
-            <label for="employment">Employment Status</label>
+            <label for="employment"
+              ><i class="fas fa-briefcase"></i> Employment Status</label
+            >
             <select id="employment" name="employment" required>
-              <option value="" disabled selected>Select an option</option>
+              <option value="" disabled selected>
+                Select your employment status
+              </option>
               <option value="employed">Employed</option>
               <option value="self-employed">Self-Employed</option>
               <option value="unemployed">Unemployed</option>
@@ -74,17 +140,34 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Additional Information</label>
-            <textarea id="message" name="message" rows="4" class="form-control"></textarea>
+            <label for="message"
+              ><i class="fas fa-comment"></i> Additional Information</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="form-control"
+              placeholder="Tell us more about your financial situation or any additional information..."
+            ></textarea>
           </div>
 
           <div class="form-actions">
             <button type="submit" class="apply-btn" id="submit-btn">
-              <span class="button-text">Submit Application</span>
-              <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+              <span class="button-text"
+                ><i class="fas fa-paper-plane"></i> Submit Application</span
+              >
+              <span
+                class="spinner-border spinner-border-sm d-none"
+                role="status"
+                aria-hidden="true"
+              ></span>
             </button>
             <div class="form-note">
-              <p>Your information is secure and will be encrypted during transmission.</p>
+              <p>
+                <i class="fas fa-shield-alt"></i> Your information is secure and
+                will be encrypted during transmission.
+              </p>
             </div>
           </div>
         </form>
