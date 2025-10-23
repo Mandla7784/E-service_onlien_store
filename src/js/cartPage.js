@@ -250,17 +250,3 @@ document.addEventListener('DOMContentLoaded', () => {
     cart.viewCart();
   }
 });
-          delete
-        </button>
-      </div>
-    `;
-  });
-
-  totalTag.innerHTML = `Grand TOTAL: R${totalPrice.toFixed(2)}`;
-  shopcartitems.append(totalTag);
-  return totalPrice;
-}
-
-// events on cartToggler
-cartToggler.onclick = () => viewCart(jsonCartitems);
-export default viewCart();

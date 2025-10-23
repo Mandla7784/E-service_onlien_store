@@ -8,30 +8,30 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-block-size: 100vh;
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  background-color: #f8f9fa;
   margin: 0;
+  line-height: 1.6;
 }
 
 nav {
-  inset-block-start: 0;
-  inline-size: 100%;
+  top: 0;
+  width: 100%;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  block-size: 100px;
+  height: 80px;
   padding: 1em 2em;
   background-color: white;
   z-index: 999;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  transition: all 0.3s ease-in-out;
 }
 
 .toggle-menu {

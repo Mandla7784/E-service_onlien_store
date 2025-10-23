@@ -10,6 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const homePage = document.querySelector(".home-page");
   const menuToggler = document.querySelector(".toggle-menu");
   const menuIcon = document.querySelector(".fa-x");
+  const cartBtn = document.querySelector("#cart-btn");
 
   // Events on menu toggler
   menuToggler.addEventListener("click", () => {
@@ -53,31 +54,66 @@ window.addEventListener("DOMContentLoaded", () => {
   headsets.forEach((headset) => {
     headset.addEventListener("click", chnageImage);
   });
+
+  // Add to cart functionality
+  if (cartBtn) {
+    cartBtn.addEventListener("click", () => {
+      const productData = {
+        id: "beats-studio-pro",
+        name: "Beats Studio Pro Wireless Headphones",
+        price: 2500.24,
+        img: "./public/download (1).jpeg",
+        quantity: 1
+      };
+      
+      if (window.cart) {
+        window.cart.addItem(productData);
+        // Show success message
+        cartBtn.textContent = "Added to Cart!";
+        cartBtn.style.backgroundColor = "#27ae60";
+        setTimeout(() => {
+          cartBtn.textContent = "ADD TO CART";
+          cartBtn.style.backgroundColor = "";
+        }, 2000);
+      }
+    });
+  }
 });
 
-// Payement Gateway 
-paypal.Marks().render("#paypal-marks-container");
+// Payment Gateway - Only initialize if PayPal is loaded
+if (typeof paypal !== 'undefined') {
+  try {
+    paypal.Marks().render("#paypal-marks-container");
 
-paypal
-  .Buttons({
-    createOrder: function (data, actions) {
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: "800",
-            },
-          },
-        ],
-      });
-    },
-    onApprove: function (data, actions) {
-      return actions.order.capture().then(function (details) {
-        alert("Transaction completed by " + details.payer.name.given_name);
-      });
-    },
-  })
-  .render("#paypal-buttons-container");
+    paypal
+      .Buttons({
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: "2500.24",
+                  currency_code: "ZAR"
+                },
+              },
+            ],
+          });
+        },
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function (details) {
+            alert("Transaction completed by " + details.payer.name.given_name);
+          });
+        },
+        onError: function (err) {
+          console.error('PayPal error:', err);
+          alert('Payment failed. Please try again.');
+        }
+      })
+      .render("#paypal-buttons-container");
+  } catch (error) {
+    console.error('PayPal initialization error:', error);
+  }
+}
 
 document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
   el.addEventListener("change", function (event) {
