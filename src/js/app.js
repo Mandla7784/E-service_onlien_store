@@ -1,8 +1,3 @@
-
-
-
-
-
 window.addEventListener("DOMContentLoaded", () => {
   // hero image
   const heroProduct = document.querySelector(".hero-image");
@@ -13,26 +8,68 @@ window.addEventListener("DOMContentLoaded", () => {
   const cartBtn = document.querySelector("#cart-btn");
 
   // Events on menu toggler
-  menuToggler.addEventListener("click", () => {
-    const navbar = document.querySelector("nav");
+  if (menuToggler) {
+    menuToggler.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const links = document.querySelector(".links");
+      const body = document.body;
 
-    // Toggle menu icon and navbar visibility
-    if (menuIcon.classList.contains("fa-x")) {
-      // Switch to bars icon and hiding the navbar
-      menuIcon.classList.remove("fa-x");
-      menuIcon.classList.add("fa-bars");
-      navbar.classList.remove("show"); // Hiding navbar
-      navbar.classList.add("hide");
+      // Toggle menu icon and navbar visibility
+      if (menuIcon.classList.contains("fa-x")) {
+        // Switch to bars icon and hiding the navbar
+        menuIcon.classList.remove("fa-x");
+        menuIcon.classList.add("fa-bars");
+        links.classList.remove("show");
+        body.style.overflow = "";
+        menuToggler.setAttribute("aria-expanded", "false");
+      } else if (menuIcon.classList.contains("fa-bars")) {
+        // Switch to x icon and showing the navbar
+        menuIcon.classList.remove("fa-bars");
+        menuIcon.classList.add("fa-x");
+        links.classList.add("show");
+        body.style.overflow = "hidden";
+        menuToggler.setAttribute("aria-expanded", "true");
+      }
+    });
 
-      // Add hide class if necessary
-    } else if (menuIcon.classList.contains("fa-bars")) {
-      // Switch to x icon and showing the navbar
-      menuIcon.classList.remove("fa-bars");
-      menuIcon.classList.add("fa-x");
-      navbar.classList.remove("hide"); // Removing hide class
-      navbar.classList.add("show"); // Showing navbar
-    }
-  });
+    // Close menu when clicking on links
+    const navLinks = document.querySelectorAll(".links a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        const links = document.querySelector(".links");
+        const menuIcon = document.querySelector(".fa-x, .fa-bars");
+        const body = document.body;
+
+        if (links.classList.contains("show")) {
+          menuIcon.classList.remove("fa-x");
+          menuIcon.classList.add("fa-bars");
+          links.classList.remove("show");
+          body.style.overflow = "";
+          menuToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      const links = document.querySelector(".links");
+      const menuIcon = document.querySelector(".fa-x, .fa-bars");
+      const body = document.body;
+
+      if (
+        links.classList.contains("show") &&
+        !menuToggler.contains(e.target) &&
+        !links.contains(e.target)
+      ) {
+        menuIcon.classList.remove("fa-x");
+        menuIcon.classList.add("fa-bars");
+        links.classList.remove("show");
+        body.style.overflow = "";
+        menuToggler.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   /**
    * The home page should display none when we activate on the shop now button
@@ -44,16 +81,29 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Function to change image
-  function chnageImage(e) {
+  function changeImage(e) {
     let image_source = e.target;
     heroProduct.src = `${image_source.src}`;
+
+    // Remove active class from all images
+    headsets.forEach((img) => img.classList.remove("active"));
+
+    // Add active class to clicked image
+    image_source.classList.add("active");
+
     console.log(image_source.src);
   }
+
   // grabbing headsets from the DOM
   const headsets = document.querySelectorAll(".heads");
   headsets.forEach((headset) => {
-    headset.addEventListener("click", chnageImage);
+    headset.addEventListener("click", changeImage);
   });
+
+  // Set first image as active by default
+  if (headsets.length > 0) {
+    headsets[0].classList.add("active");
+  }
 
   // Add to cart functionality
   if (cartBtn) {
@@ -62,10 +112,10 @@ window.addEventListener("DOMContentLoaded", () => {
         id: "beats-studio-pro",
         name: "Beats Studio Pro Wireless Headphones",
         price: 2500.24,
-        img: "./public/download (1).jpeg",
-        quantity: 1
+        img: "public/download (1).jpeg",
+        quantity: 1,
       };
-      
+
       if (window.cart) {
         window.cart.addItem(productData);
         // Show success message
@@ -78,57 +128,103 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Cart icon click handler
+  const cartIcon = document.querySelector(".cart-icon");
+  if (cartIcon) {
+    cartIcon.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.cart) {
+        window.cart.toggleCart();
+      }
+    });
+  }
 });
 
-// Payment Gateway - Only initialize if PayPal is loaded
-if (typeof paypal !== 'undefined') {
-  try {
-    paypal.Marks().render("#paypal-marks-container");
+// Payment Gateway - Initialize PayPal when SDK is loaded
+function initializePayPal() {
+  if (typeof paypal !== "undefined") {
+    try {
+      // Render PayPal marks
+      if (document.querySelector("#paypal-marks-container")) {
+        paypal.Marks().render("#paypal-marks-container");
+      }
 
-    paypal
-      .Buttons({
-        createOrder: function (data, actions) {
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: "2500.24",
-                  currency_code: "ZAR"
-                },
-              },
-            ],
-          });
-        },
-        onApprove: function (data, actions) {
-          return actions.order.capture().then(function (details) {
-            alert("Transaction completed by " + details.payer.name.given_name);
-          });
-        },
-        onError: function (err) {
-          console.error('PayPal error:', err);
-          alert('Payment failed. Please try again.');
-        }
-      })
-      .render("#paypal-buttons-container");
-  } catch (error) {
-    console.error('PayPal initialization error:', error);
+      // Render PayPal buttons
+      if (document.querySelector("#paypal-buttons-container")) {
+        paypal
+          .Buttons({
+            style: {
+              layout: "vertical",
+              color: "blue",
+              shape: "rect",
+              label: "paypal",
+            },
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: "2500.24",
+                      currency_code: "ZAR",
+                    },
+                  },
+                ],
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (details) {
+                console.log("Payment completed:", details);
+                alert("Payment successful! Transaction ID: " + details.id);
+                // Redirect to success page or show success message
+              });
+            },
+            onError: function (err) {
+              console.error("PayPal error:", err);
+              alert("Payment failed. Please try again.");
+            },
+            onCancel: function (data) {
+              console.log("Payment cancelled:", data);
+            },
+          })
+          .render("#paypal-buttons-container");
+      }
+    } catch (error) {
+      console.error("PayPal initialization error:", error);
+    }
+  } else {
+    // Retry after a short delay if PayPal SDK not loaded yet
+    setTimeout(initializePayPal, 100);
   }
 }
 
+// Initialize PayPal when DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+  // Wait a bit for PayPal SDK to load
+  setTimeout(initializePayPal, 500);
+});
+
+// Handle payment option changes
 document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
   el.addEventListener("change", function (event) {
+    const alternateContainer = document.querySelector("#alternate-button-container");
+    const paypalContainer = document.querySelector("#paypal-buttons-container");
+    
     if (event.target.value === "paypal") {
-      document.querySelector("#alternate-button-container").style.display =
-        "none";
-      document.querySelector("#paypal-buttons-container").style.display =
-        "block";
+      if (alternateContainer) alternateContainer.style.display = "none";
+      if (paypalContainer) paypalContainer.style.display = "block";
     } else {
-      document.querySelector("#alternate-button-container").style.display =
-        "block";
-      document.querySelector("#paypal-buttons-container").style.display =
-        "none";
+      if (alternateContainer) alternateContainer.style.display = "block";
+      if (paypalContainer) paypalContainer.style.display = "none";
     }
   });
 });
 
-document.querySelector("#alternate-button-container").style.display = "none";
+// Initialize payment options
+document.addEventListener("DOMContentLoaded", function() {
+  const alternateContainer = document.querySelector("#alternate-button-container");
+  const paypalContainer = document.querySelector("#paypal-buttons-container");
+  
+  if (alternateContainer) alternateContainer.style.display = "none";
+  if (paypalContainer) paypalContainer.style.display = "block";
+});
