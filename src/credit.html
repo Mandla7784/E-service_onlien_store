@@ -26,30 +26,37 @@
     <main>
       <section class="credit-form">
         <h2>Apply for Credit</h2>
-        <form action="#" method="post">
+        <form action="https://your-secure-endpoint.com/process-credit" method="post" autocomplete="on" id="creditApplicationForm">
           <div class="form-group">
             <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" name="full-name" required />
+            <input type="text" id="full-name" name="full-name" autocomplete="name" required 
+                   pattern="[A-Za-z\s-]+" title="Please enter a valid name" />
           </div>
 
           <div class="form-group">
-            <label for="id-number">ID Number</label>
-            <input type="text" id="id-number" name="id-number" required />
+            <label for="id-number">ID/Passport Number</label>
+            <input type="text" id="id-number" name="id-number" autocomplete="off" 
+                   pattern="[0-9A-Za-z]+" title="Please enter a valid ID or passport number" required 
+                   inputmode="numeric" />
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" autocomplete="email" 
+                   inputmode="email" required />
           </div>
 
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required />
+            <input type="tel" id="phone" name="phone" autocomplete="tel" 
+                   pattern="[0-9+\-\s()]+" title="Please enter a valid phone number" 
+                   inputmode="tel" required />
           </div>
 
           <div class="form-group">
             <label for="income">Monthly Income (ZAR)</label>
-            <input type="number" id="income" name="income" required />
+            <input type="number" id="income" name="income" autocomplete="transaction-amount" 
+                   min="0" step="0.01" inputmode="decimal" required />
           </div>
 
           <div class="form-group">
