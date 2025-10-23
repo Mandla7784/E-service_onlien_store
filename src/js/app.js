@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   // hero image
   const heroProduct = document.querySelector(".hero-image");
-  const btnShop = document.querySelector(".btn-start-shop");
+  const btnShop = document.querySelector(".btn-primary");
   const homePage = document.querySelector(".home-page");
   const menuToggler = document.querySelector(".toggle-menu");
   const menuIcon = document.querySelector(".fa-x");
@@ -74,98 +74,124 @@ window.addEventListener("DOMContentLoaded", () => {
   /**
    * The home page should display none when we activate on the shop now button
    */
-  btnShop.addEventListener("click", () => {
-    console.log("clciked shopnow");
-    homePage.classList.remove("home-page");
-    homePage.classList.add("home-page-hide");
-  });
+  if (btnShop) {
+    btnShop.addEventListener("click", () => {
+      console.log("clicked shop now");
+      if (homePage) {
+        homePage.classList.remove("home-page");
+        homePage.classList.add("home-page-hide");
+      }
+    });
+  } else {
+    console.warn("Shop button not found");
+  }
 
-  // Function to change image
+  // Simple and direct image change function
   function changeImage(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    console.log("=== IMAGE CLICK DETECTED ===");
+    console.log("Event:", e);
+    console.log("Target:", e.target);
+    console.log("Target class list:", e.target.classList);
 
-    let image_source = e.target;
-    console.log("Image clicked:", image_source);
-    console.log("Hero product element:", heroProduct);
+    const clickedImage = e.target;
+    const mainImage = document.querySelector(".hero-image");
+
+    console.log("Main image element:", mainImage);
+    console.log("Clicked image src:", clickedImage.src);
     console.log(
-      "Current hero image src:",
-      heroProduct ? heroProduct.src : "Not found"
+      "Current main image src:",
+      mainImage ? mainImage.src : "Not found"
     );
 
-    if (heroProduct && image_source) {
-      // Update the main image source
-      heroProduct.src = image_source.src;
-      heroProduct.alt = image_source.alt;
-      console.log("Image source updated to:", image_source.src);
+    if (mainImage && clickedImage) {
+      // Directly update the main image
+      mainImage.src = clickedImage.src;
+      mainImage.alt = clickedImage.alt;
 
-      // Remove active class from all images
-      const allHeadsets = document.querySelectorAll(".heads");
-      allHeadsets.forEach((img) => {
-        img.classList.remove("active");
-        console.log("Removed active from:", img);
+      console.log("✅ Main image updated to:", mainImage.src);
+
+      // Update active states
+      const allThumbnails = document.querySelectorAll(".heads");
+      allThumbnails.forEach((thumb) => {
+        thumb.classList.remove("active");
       });
+      clickedImage.classList.add("active");
 
-      // Add active class to clicked image
-      image_source.classList.add("active");
-      console.log("Active class added to:", image_source);
+      console.log("✅ Active state updated");
 
-      // Force a re-render
-      heroProduct.style.opacity = "0.8";
+      // Visual feedback
+      mainImage.style.transform = "scale(0.95)";
       setTimeout(() => {
-        heroProduct.style.opacity = "1";
-      }, 50);
+        mainImage.style.transform = "scale(1)";
+      }, 100);
     } else {
-      console.error("Hero product or image source not found");
-      console.error("Hero product:", heroProduct);
-      console.error("Image source:", image_source);
+      console.error("❌ Elements not found!");
+      console.error("Main image:", mainImage);
+      console.error("Clicked image:", clickedImage);
     }
   }
 
-  // grabbing headsets from the DOM
-  const headsets = document.querySelectorAll(".heads");
-  console.log("Found headsets:", headsets.length);
+  // Initialize image gallery with multiple approaches
+  function initImageGallery() {
+    console.log("=== INITIALIZING IMAGE GALLERY ===");
 
-  if (headsets.length > 0) {
-    headsets.forEach((headset, index) => {
-      console.log(`Adding click listener to headset ${index}:`, headset);
-      headset.addEventListener("click", changeImage);
+    // Method 1: Direct element selection
+    const thumbnails = document.querySelectorAll(".heads");
+    const mainImage = document.querySelector(".hero-image");
 
-      // Also add touch events for mobile
-      headset.addEventListener("touchstart", changeImage);
-    });
+    console.log("Thumbnails found:", thumbnails.length);
+    console.log("Main image found:", !!mainImage);
 
-    // Set first image as active by default
-    headsets[0].classList.add("active");
-    console.log("First image set as active");
-  } else {
-    console.error("No headsets found in DOM");
+    if (thumbnails.length > 0 && mainImage) {
+      // Add click listeners to each thumbnail
+      thumbnails.forEach((thumb, index) => {
+        console.log(`Setting up thumbnail ${index}:`, thumb);
 
-    // Try again after a short delay in case DOM isn't fully loaded
-    setTimeout(() => {
-      const retryHeadsets = document.querySelectorAll(".heads");
-      console.log("Retry - Found headsets:", retryHeadsets.length);
+        // Remove any existing listeners
+        thumb.removeEventListener("click", changeImage);
+        thumb.removeEventListener("touchstart", changeImage);
 
-      if (retryHeadsets.length > 0) {
-        retryHeadsets.forEach((headset, index) => {
-          console.log(
-            `Adding click listener to headset ${index} (retry):`,
-            headset
-          );
-          headset.addEventListener("click", changeImage);
-          headset.addEventListener("touchstart", changeImage);
-        });
+        // Add new listeners
+        thumb.addEventListener("click", changeImage);
+        thumb.addEventListener("touchstart", changeImage);
 
-        retryHeadsets[0].classList.add("active");
-        console.log("First image set as active (retry)");
-      }
-    }, 100);
+        // Make sure it's clickable
+        thumb.style.cursor = "pointer";
+        thumb.style.pointerEvents = "auto";
+      });
+
+      // Set first thumbnail as active
+      thumbnails[0].classList.add("active");
+      console.log("✅ Image gallery initialized successfully");
+      return true;
+    } else {
+      console.error("❌ Failed to find required elements");
+      return false;
+    }
   }
 
-  // Add event delegation as fallback
+  // Try to initialize immediately
+  let galleryReady = initImageGallery();
+
+  // If not ready, try again with delays
+  if (!galleryReady) {
+    setTimeout(() => {
+      console.log("Retrying gallery initialization...");
+      galleryReady = initImageGallery();
+    }, 200);
+
+    if (!galleryReady) {
+      setTimeout(() => {
+        console.log("Final retry for gallery initialization...");
+        initImageGallery();
+      }, 500);
+    }
+  }
+
+  // Event delegation as ultimate fallback
   document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("heads")) {
-      console.log("Event delegation triggered for:", e.target);
+    if (e.target && e.target.classList.contains("heads")) {
+      console.log("🔥 Event delegation caught click on:", e.target);
       changeImage(e);
     }
   });
