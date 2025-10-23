@@ -199,6 +199,10 @@ h1 {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  /* Performance optimizations for mobile */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .hero-overlay {
@@ -457,33 +461,199 @@ h1 {
 .hero-actions { animation-delay: 0.4s; }
 .hero-stats { animation-delay: 0.6s; }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 1024px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+  
+  .hero-features {
+    gap: 1rem;
+  }
+  
+  .hero-stats {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navigation improvements for mobile */
+  nav {
+    padding: 0 1rem;
+    height: 60px;
+  }
+  
+  .logo {
+    width: 60px;
+    height: 45px;
+  }
+  
+  .cart-icon {
+    padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .cart-icon i {
+    font-size: 18px;
+  }
+  
+  /* Hero section mobile optimizations */
+  #home {
+    min-height: 100vh;
+    padding: 1rem;
+    /* Disable fixed background on mobile for better performance */
+    background-attachment: scroll;
+    /* Optimize animations for mobile */
+    animation: none;
+  }
+  
+  /* Disable complex animations on mobile for better performance */
+  .hero-badge,
+  .hero-title,
+  .hero-subtitle,
+  .hero-features,
+  .hero-actions,
+  .hero-stats {
+    animation: none;
+  }
+  
+  /* Reduce backdrop-filter usage on mobile */
+  .feature-item,
+  .stat-item {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  #home .content {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
   }
   
   .hero-features {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-item {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
   }
   
   .hero-actions {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px 30px;
+    font-size: 16px;
+    justify-content: center;
   }
   
   .hero-stats {
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .stat-item {
-    min-width: 100px;
-    padding: 1rem;
+    min-width: 90px;
+    padding: 1rem 0.8rem;
+    flex: 1;
+    max-width: 120px;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .badge-text {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+  
+  .feature-item {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 25px;
+    font-size: 14px;
+  }
+  
+  .stat-item {
+    padding: 0.8rem 0.6rem;
+    min-width: 80px;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  
+  /* Navigation for very small screens */
+  nav {
+    height: 55px;
+    padding: 0 0.8rem;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 38px;
+  }
+  
+  .cart-icon {
+    padding: 6px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+  
+  .cart-icon i {
+    font-size: 16px;
   }
 }
 
@@ -1520,6 +1690,37 @@ button {
     color: white;
     transform: none;
     box-shadow: none;
+  }
+  
+  /* Enhanced mobile menu animations */
+  .links a {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .links a:hover::before {
+    left: 100%;
+  }
+  
+  /* Smooth scrolling for mobile */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
   }
 }
 
